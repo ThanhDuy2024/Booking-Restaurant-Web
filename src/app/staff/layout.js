@@ -1,6 +1,8 @@
 'use client';
-import { AuthProvider } from '@/context/AuthContext';
-import { ToastProvider } from '@/context/toastContext';
+import '@/styles/globals.css'
+import '@/styles/tailwind.css'
+import { AuthProvider } from '@/context/AuthContext'
+import { ToastProvider } from '@/context/toastContext'
 
 export default function StaffLayout({ children }) {
   return (

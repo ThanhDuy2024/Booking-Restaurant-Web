@@ -1,0 +1,18 @@
+/*Variable.css*/
+:root {
+    --primary: #facc15;
+    --heading: #000000B3;
+    --background: #FFFFFF;
+    --text-color: #111827;
+    --border-card: #e5e7eb;
+
+
+    --font-title: 'Montserrat', sans-serif;
+    --font-subTitle: 'Roboto', sans-serif;
+    --font-text: 'Inter', sans-serif;
+
+    --font-size-title: 1.5rem;
+    --font-size-subTitle: 1.25rem;
+    --font-size-text: 1rem;
+    --font-size-mini-text: 0.8rem;
+}

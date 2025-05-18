@@ -2,7 +2,8 @@
 //bo header footer vao day
 'use client'
 import { ToastProvider } from '@/context/toastContext'
-import 'src/styles/tailwind.css'
+import '@/styles/tailwind.css'
+import '@/styles/globals.css'
 
 export default function RootLayout({ children }) {
   return (

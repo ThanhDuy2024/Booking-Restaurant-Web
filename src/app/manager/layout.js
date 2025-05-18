@@ -1,4 +1,6 @@
 'use client';
+import '@/styles/tailwind.css'
+import '@/styles/globals.css'
 import { AuthProvider } from '@/context/AuthContext';
 import { ToastProvider } from '@/context/toastContext';
 

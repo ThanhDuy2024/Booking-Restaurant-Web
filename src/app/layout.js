@@ -1,6 +1,7 @@
 //layout cua toan web
 //bo header footer vao day
-import { ToastProvider } from '@/context/ToastContext';
+'use client'
+import { ToastProvider } from '@/context/toastContext';
 
 export default function RootLayout({ children }) {
   return (

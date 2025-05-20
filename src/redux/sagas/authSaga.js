@@ -1,4 +1,5 @@
-import { call, put, takeLatest, delay } from 'redux-saga/effects';import { loginRequest, loginSuccess, loginFailure } from '../slices/authSlice';
+import { call, put, takeLatest, delay } from 'redux-saga/effects';
+import { loginRequest, loginSuccess, loginfailed } from '../slices/authSlice';
 import { Router } from 'next/router';
 import { showToast } from '@/lib/utils';
 
@@ -31,9 +32,8 @@ function* handleLogin(action) {
     yield put(loginFailure(message));
     showToast(message, { type: 'error' });
   }
-};
+}
 
 export default function* watchAuthSaga() {
   yield takeLatest(loginRequest.type, handleLogin);
 }
-

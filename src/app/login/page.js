@@ -6,7 +6,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginRequest } from '@/redux/slices/authSlice';
 import { PacmanLoader } from 'react-spinners';
-import Spinner from '@/components/loading/Spinner';
+import Spinner from '@/components/common/loading/Spinner';
 import { useState } from 'react';
 import '@/styles/globals.css';
 import '@/styles/tailwind.css';

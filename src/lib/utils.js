@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 export const buildUrlWithParams = (baseUrl, queryParams) => {
   const params = new URLSearchParams();
 
@@ -11,4 +13,19 @@ export const buildUrlWithParams = (baseUrl, queryParams) => {
   }
 
   return params.toString() ? `${baseUrl}?${params.toString()}` : baseUrl;
+};
+
+
+
+export const showToast = (message, options = {}) => {
+  toast(message, {
+    type: options.type || 'success',
+    position: 'top-right',
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    ...options,
+  });
 };

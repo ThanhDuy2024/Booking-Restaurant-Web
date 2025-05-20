@@ -9,30 +9,30 @@ module.exports = {
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],
-        monsterat: ['Monsterat', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+        title: 'var(--font-title)',
+        sub_title: 'var(--font-subTitle)',
+        text: 'var(--font-text)',
+      },
+      fontSize: {
+        title: 'var(--font-size-title)',
+        sub_title: 'var(--font-size-subTitle)',
+        text: 'var(--font-size-text)',
+        mini_text: 'var(--font-size-mini-text)',
       },
       colors: {
         primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
+          DEFAULT: 'var(--primary)',
         },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
+        text: {
+          DEFAULT: 'var(--text-color)',
         },
-        background: 'hsl(var(--background))',
-        fontFamily: {
-          title: 'var(--font-title)',
-          mini_title: 'var(--font-mini-title)',
-          text: 'var(--font-text)',
+        border: {
+          DEFAULT: 'var(--border-card)',
         },
-        fontSize: {
-          title: 'var(--font-size-title)',
-          mini_title: 'var(--font-size-mini-title)',
-          text: 'var(--font-size-text)',
-        },
+        heading: 'var(--heading)',
+        background: 'var(--background)',
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
 };

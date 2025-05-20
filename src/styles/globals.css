@@ -1,11 +1,11 @@
 /* Global reset / normalize */
+@import './variable.css';
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-@import './variable.css';
 
 body {
     font-family: var(--font-text), sans-serif;

@@ -19,11 +19,11 @@ export default function ManagerLayout({ children }) {
   if (!user || user.role !== 'admin') return null;
 
   return (
-    <div className="min-h-screen flex">
-      <aside className="w-64 bg-gray-900 text-white p-4">
+    <div className="min-h-screen w-screen relative">
+      <aside className="w-64 hidden absolute bg-gray-900 text-white p-4">
         Sidebar dashboard
       </aside>
-      <main className="flex-1 p-6 bg-gray-100">{children}</main>
+      <main className="flex-1 bg-gray-100">{children}</main>
     </div>
   );
 }

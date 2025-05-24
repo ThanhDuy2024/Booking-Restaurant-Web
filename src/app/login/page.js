@@ -1,40 +1,51 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginRequest } from '@/redux/slices/authSlice';
-import { PacmanLoader } from 'react-spinners';
 import Spinner from '@/components/common/loading/Spinner';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import '@/styles/globals.css';
 import '@/styles/tailwind.css';
 import '@/styles/variable.css';
 import AppButton from '@/components/common/AppButton';
-
-const SignInSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Invalid Email')
-    .required('Required'),
-  password: Yup.string()
-    .min(8, 'Password must have at least 8 characters')
-    .required('Required'),
-});
+import { SignInSchema } from '@/lib/validationSchema';
+import { showToast } from '@/lib/utils';
+import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
+  const router = useRouter();
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.auth);
-  const [isSpinning, setIsSpinning] = useState(false);
+  const { loading, error, user } = useSelector((state) => state.auth);
 
+  useEffect(() => {
+    if (!user) return;
 
-  const handleSubmit = async ({ email, password }) => {
+    console.log('✅ Redirecting user with role =', user.role);
+
+    switch (user.role) {
+      case 'admin':
+        console.log('👉 Pushing to /manager');
+        router.push('/manager');
+        break;
+      case 'staff':
+        console.log('👉 Pushing to /staff');
+        router.push('/staff');
+        break;
+      default:
+        console.log('👉 Pushing to /');
+        router.push('/');
+    }
+  }, [user, router]);
+
+  const handleSubmit = useCallback(({ email, password }) => {
     if (!email || !password) {
       showToast('Vui lòng nhập đầy đủ email và mật khẩu!', { type: 'warning' });
       return;
     }
     dispatch(loginRequest({ email, password }));
-  };
+  }, [dispatch]);
 
   return (
     <>

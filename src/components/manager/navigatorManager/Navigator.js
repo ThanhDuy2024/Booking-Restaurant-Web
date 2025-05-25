@@ -100,16 +100,19 @@ const Navigator = ({ widthDevice }) => {
                 <Link href={'/manager/branch_manager'} onClick={() => handleCloseMenu()}>Chi nhánh</Link>
               </li>
               <li className={'px-2.5 py-2 font-bold border-b-2 border-[var(--border-card)]'}>
-                <Link href={'/manager/finance_manager'} onClick={() => handleCloseMenu()}>Doanh thu</Link>
+                <Link href={'/manager'} onClick={() => handleCloseMenu()}>Doanh thu</Link>
               </li>
               <li className={'px-2.5 py-2 font-bold border-b-2 border-[var(--border-card)]'}>
-                <Link href={'/manager/food_manager'} onClick={() => handleCloseMenu()}>Thực đơn</Link>
+                <Link href={'/manager/category_manager'} onClick={() => handleCloseMenu()}>Danh mục</Link>
               </li>
               <li className={'px-2.5 py-2 font-bold border-b-2 border-[var(--border-card)]'}>
-                <Link href={'/manager/user_manager'} onClick={() => handleCloseMenu()}>Người dùng</Link>
+                <Link href={'/manager'} onClick={() => handleCloseMenu()}>Thực đơn</Link>
+              </li>
+              <li className={'px-2.5 py-2 font-bold border-b-2 border-[var(--border-card)]'}>
+                <Link href={'/manager'} onClick={() => handleCloseMenu()}>Người dùng</Link>
               </li>
               <li className={'px-2.5 py-2 font-bold'}>
-                <Link href={'/manager/setting'} onClick={() => handleCloseMenu()}>Cài đặt</Link>
+                <Link href={'/manager'} onClick={() => handleCloseMenu()}>Cài đặt</Link>
               </li>
             </ul>
           </motion.div>

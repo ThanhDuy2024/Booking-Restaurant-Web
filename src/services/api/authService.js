@@ -23,7 +23,7 @@ export const logoutService = async () => {
 
 export const getMe = async () => {
   try {
-    const response = await apiClient.post(endPoints.auth.me);
+    const response = await apiClient.get(endPoints.auth.getProfile);
     return response.data;
   } catch (error) {
     console.error('Get current user failed', error);

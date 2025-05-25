@@ -1,90 +1,41 @@
-
 export default function CategoryManage() {
-  return(
-    <>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-          <caption
-            className="p-5 text-lg font-semibold text-left rtl:text-right text-gray-900 bg-white dark:text-white dark:bg-gray-800">
-            Our products
-            <p className="mt-1 text-sm font-normal text-gray-500 dark:text-gray-400">Browse a list of Flowbite products
-              designed to help you work and play, stay organized, get answers, keep in touch, grow your business, and
-              more.</p>
-          </caption>
-          <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+  return (
+    <div className="p-6 bg-white rounded-lg shadow-md">
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-xl font-semibold text-gray-800">
+          Quản lý danh mục món ăn
+        </h2>
+        <button className="flex gap-2 items-center bg-primary text-white rounded-lg hover:bg-primary-dark transition">
+          <img src="/icons/manager/icon_add_color.png" alt="Add" className="w-12 h-12 bg-white border-2 border-[var(--primary)] rounded-l-lg" />
+          <span className={`pr-4 py-2`}>Thêm danh mục</span>
+        </button>
+      </div>
+
+      <div className="overflow-x-auto rounded-lg border border-gray-200">
+        <table className="w-full text-left bg-white">
+          <thead className="bg-gray-200 text-sm text-gray-600 uppercase">
           <tr>
             <th scope="col" className="px-6 py-3">
-              Product name
+              Tên danh mục
             </th>
             <th scope="col" className="px-6 py-3">
-              Color
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Category
-            </th>
-            <th scope="col" className="px-6 py-3">
-              Price
-            </th>
-            <th scope="col" className="px-6 py-3">
-              <span className="sr-only">Edit</span>
+              Trạng thái
             </th>
           </tr>
           </thead>
-          <tbody>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-              Apple MacBook Pro 17&#34;
-            </th>
+          <tbody className="text-sm font-text text-gray-700 hover:bg-gradient-to-r from-violet-200 to-amber-200 transition duration-1000 cursor-pointer ">
+          <tr className="border-t">
             <td className="px-6 py-4">
-              Silver
+              Apple MacBook Pro 17"
             </td>
             <td className="px-6 py-4">
-              Laptop
-            </td>
-            <td className="px-6 py-4">
-              $2999
-            </td>
-            <td className="px-6 py-4 text-right">
-              <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+              Hiển thị
             </td>
           </tr>
-          <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-              Microsoft Surface Pro
-            </th>
-            <td className="px-6 py-4">
-              White
-            </td>
-            <td className="px-6 py-4">
-              Laptop PC
-            </td>
-            <td className="px-6 py-4">
-              $1999
-            </td>
-            <td className="px-6 py-4 text-right">
-              <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-            </td>
-          </tr>
-          <tr className="bg-white dark:bg-gray-800">
-            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-              Magic Mouse 2
-            </th>
-            <td className="px-6 py-4">
-              Black
-            </td>
-            <td className="px-6 py-4">
-              Accessories
-            </td>
-            <td className="px-6 py-4">
-              $99
-            </td>
-            <td className="px-6 py-4 text-right">
-              <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-            </td>
-          </tr>
+          {/* TODO: Map dữ liệu từ Redux vào đây */}
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   );
 }

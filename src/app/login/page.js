@@ -55,9 +55,7 @@ export default function LoginPage() {
           <img className={`w-4/6 rounded-l-3xl`} src="/images/login_img.png" alt="" />
           {loading && <Spinner type="PacmanLoader" color="#000000" size={60} delay={2000} />}
           {error && (
-            <div className="text-red-500 text-center mt-4">
-              {error}
-            </div>
+            showToast(error, {type: 'error'})
           )}
           <motion.div
             initial={{ opacity: 0, y: -50 }}

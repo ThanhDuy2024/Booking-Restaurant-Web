@@ -6,24 +6,27 @@ import {
   logoutSuccess,
   logoutFailed,
   logoutRequest,
+  checkAuthRequest,
 } from '../slices/authSlice';
 import { showToast } from '@/lib/utils';
-import { loginService, logoutService } from '@/services/api/authService';
+import { getMe, loginService, logoutService } from '@/services/api/authService';
 
 function* handleLogin(action) {
   try {
-    const response = yield call(loginService, {
+    yield call(loginService, {
       email: action.payload.email,
       password: action.payload.password,
     });
 
-    console.log('✅ Login response:', response);
-    const { role, message } = response;
-
     yield delay(2000);
     console.log('✅ Dispatch loginSuccess');
 
-    yield put(loginSuccess({role}));
+    const user = yield call(getMe);
+
+    console.log('✅ Dispatch getMe');
+    yield delay(1000);
+
+    yield put(loginSuccess(user));
     showToast(message || 'Đăng nhập thành công');
   } catch (error) {
     console.log('❌ Login error:', error);
@@ -47,8 +50,18 @@ function* handleLogout() {
   }
 }
 
+function* checkAuth() {
+  try{
+    const user = yield call(getMe);
+    yield put(loginSuccess(user));
+  } catch (error) {
+    yield put(loginFailed('Không tìm thấy dữ liệu', error))
+  }
+}
+
 
 export default function* watchAuthSaga() {
   yield takeLatest(loginRequest.type, handleLogin);
   yield takeLatest(logoutRequest.type, handleLogout);
+  yield takeLatest(checkAuthRequest.type, checkAuth);
 }

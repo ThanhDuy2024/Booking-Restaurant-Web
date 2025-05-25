@@ -4,11 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import LineChart from '@/lib/charts/Line';
 import { useState } from 'react';
-import Navigator from 'src/components/common/navigatorManager/Navigator';
+import Navigator from '@/components/manager/navigatorManager/Navigator';
 
 const Dashboard = () => {
   const [openMenu, setOpenMenu] = useState(false);
-
   const handleOpenMenu = () => {
     setOpenMenu(!openMenu);
   };

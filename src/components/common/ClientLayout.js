@@ -1,7 +1,5 @@
 'use client';
 
-'use client';
-
 import { usePathname, useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';

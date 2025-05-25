@@ -3,7 +3,7 @@ import apiClient from '@/services/api/apiClient';
 
 export const loginService = async (loginData) => {
   try {
-    const response = await apiClient.post(endPoints.auth.login,loginData);
+    const response = await apiClient.post(endPoints.auth.login, loginData);
     return response.data;
   } catch (error) {
     console.error('Login failed:', error);
@@ -17,6 +17,16 @@ export const logoutService = async () => {
     return response.data.message;
   } catch (error) {
     console.error('Logout failed:', error);
+    throw error;
+  }
+};
+
+export const getMe = async () => {
+  try {
+    const response = await apiClient.post(endPoints.auth.me);
+    return response.data;
+  } catch (error) {
+    console.error('Get current user failed', error);
     throw error;
   }
 };

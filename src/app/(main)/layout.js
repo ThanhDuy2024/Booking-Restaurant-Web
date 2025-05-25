@@ -8,7 +8,6 @@ import '../../styles/tailwind.css';
 export default function MainLayout({ children }) {
   return (
     <>
-      <ClientLayoutRedirect />
       <Header />
       <main>{children}</main>
       <Footer />

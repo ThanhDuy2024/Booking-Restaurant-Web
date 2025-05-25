@@ -4,6 +4,7 @@ const endPoints = {
   auth: {
     login: `/api/admin/auth/login`,
     logout: `/api/admin/auth/logout`,
+    getProfile: `/api/admin/profile/me`
   },
 
   admin: {

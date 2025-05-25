@@ -88,29 +88,31 @@ const Navigator = ({ widthDevice }) => {
       <MotionConfig>
         <AnimatePresence initial={false}>
           <motion.div
+            key="menu-panel"
             {...getMotionMobileConfig(isShowMenu, widthOffset)}
             className=" bg-white -top-5  min-w-fit sm:w-full h-max absolute sm:relative shadow-lg sm:shadow-none shadow-gray-500 text-black z-[10]"
           >
             <ul className="w-full h-full">
               <li className={'px-2.5 py-2 font-bold border-b-2 border-[var(--primary)]'}>
-                <Link to={'/'} href={''} onClick={()=>handleCloseMenu()}>Trang chủ</Link>
+                <Link to={'/public'} href={''} onClick={()=>handleCloseMenu()}>Trang chủ</Link>
               </li>
               <li className={'px-2.5 py-2 font-bold border-b-2 border-[var(--primary)]'}>
-                <Link to={'/'} href={''} onClick={()=>handleCloseMenu()}>Quản lí</Link>
+                <Link to={'/public'} href={''} onClick={()=>handleCloseMenu()}>Quản lí</Link>
               </li>
               <li className={'px-2.5 py-2 font-bold border-b-2 border-[var(--primary)]'}>
-                <Link to={'/'} href={''} onClick={()=>handleCloseMenu()}>Yêu cầu</Link>
+                <Link to={'/public'} href={''} onClick={()=>handleCloseMenu()}>Yêu cầu</Link>
               </li>
               <li className={'px-2.5 py-2 font-bold border-b-2 border-[var(--primary)]'}>
-                <Link to={'/'} href={''} onClick={()=>handleCloseMenu()}>Doanh thu</Link>
+                <Link to={'/public'} href={''} onClick={()=>handleCloseMenu()}>Doanh thu</Link>
               </li>
               <li className={'px-2.5 py-2 font-bold'}>
-                <Link to={'/'} href={''} onClick={()=>handleCloseMenu()}>Cài đặt</Link>
+                <Link to={'/public'} href={''} onClick={()=>handleCloseMenu()}>Cài đặt</Link>
               </li>
             </ul>
           </motion.div>
           {widthOffset !== '0' ? (
             <motion.div
+              key="backdrop"
               {...getMotionMobileConfig(isShowMenu, '-600vw')}
               className={
                 'w-screen h-screen absolute -top-5 left-0 bg-[#5d5d5d4d] z-[1] cursor-pointer'

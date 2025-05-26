@@ -3,6 +3,7 @@ import endPoints from '@/services/api/endPoints';
 
 export const fetchCategory = async (search, page, size, sort) => {
   try {
+    console.log('[DEBUG] URL gọi API:', endPoints.admin.getALlCategory(search, page, size, sort));
     const response = await apiClient.get(endPoints.admin.getALlCategory(
       search, page, size, sort,
     ));
@@ -15,7 +16,11 @@ export const fetchCategory = async (search, page, size, sort) => {
 
 export const createCategory = async (createForm) => {
   try {
-    const response = await apiClient.post(endPoints.admin.createCategory, createForm);
+    const response = await apiClient.post(endPoints.admin.createCategory, createForm, {
+      headers: {
+        'Content-Type' : 'multipart/form-data',
+      }
+    });
     return response.data;
   } catch (error) {
     console.error('Create failed:', error);

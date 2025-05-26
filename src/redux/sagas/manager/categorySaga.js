@@ -12,11 +12,12 @@ import { showToast } from '@/lib/utils';
 
 function* handleFetchCategory() {
   try {
+
     yield put(getCategoryRequest());
-    const query = yield select(state => state.category.query);
-    const [search, page, size, sort] = query;
+    const { search, page, size, sort } = yield select(state => state.admin_category.query);
     const data = yield call(fetchCategory, search, page, size, sort);
-    yield put(getCategorySuccess(data));
+    const { categoryList, pages  } = data;
+    yield put(getCategorySuccess({ items: categoryList, pages }));
   } catch (error) {
     const message = error.response?.data?.message || 'Lấy dữ liệu thất bại';
     yield put(getCategoryFailed(message));
@@ -29,6 +30,9 @@ function* handleCreateCategory(action) {
     yield put(createCategoryRequest());
     const newCategory = yield call(createCategory, action.payload);
     yield put(createCategorySuccess(newCategory));
+    showToast('Tạo danh mục thành công', { type: 'success' });
+
+    yield put({ type: 'admin_category/fetchCategory' });
   } catch (error) {
     const message = error.response?.data?.message || 'Tạo danh mục thất bại';
     yield put(createCategoryFailed(message));

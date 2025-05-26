@@ -1,4 +1,11 @@
 import { toast } from 'react-toastify';
+import { clsx } from 'clsx';
+
+
+export function cn(...args) {
+  return args.filter(Boolean).join(' ');
+}
+
 
 export const buildUrlWithParams = (baseUrl, queryParams) => {
   const params = new URLSearchParams();

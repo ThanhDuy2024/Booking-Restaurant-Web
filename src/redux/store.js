@@ -14,7 +14,14 @@ export const store = configureStore({
     admin_category: categoryReducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
+    getDefaultMiddleware({
+      thunk: false,
+      serializableCheck: {
+        ignoredActions: ['admin_category/createCategory'],
+        ignoredPaths: ['payload'],
+      },
+
+    }).concat(sagaMiddleware),
 });
 
 sagaMiddleware.run(authSaga);

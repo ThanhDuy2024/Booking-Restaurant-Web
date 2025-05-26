@@ -3,12 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   items: [],
   selectedItem: null,
+  pagination: {
+    pages: 1,
+  },
   query: {
-    search: '',
-    page: 1,
-    size: 10,
-    sort: 'name_asc',
-    status: null,
+    search: null,
+    page: null,
+    size: null,
   },
   loading: false,
   error: null,
@@ -26,7 +27,8 @@ const categorySlice = createSlice({
 
     getCategorySuccess(state, action) {
       state.loading = false;
-      state.items = action.payload;
+      state.items = action.payload.items;
+      state.pagination.pages = action.payload.pages;
       state.error = null;
     },
 

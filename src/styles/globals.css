@@ -61,5 +61,5 @@ input:-webkit-autofill:active {
 }
 
 input:valid {
-  background-color: #f5f5f5 !important;
+  background-color: #ffffff !important;
 }

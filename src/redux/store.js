@@ -17,7 +17,7 @@ export const store = configureStore({
     getDefaultMiddleware({
       thunk: false,
       serializableCheck: {
-        ignoredActions: ['admin_category/createCategory'],
+        ignoredActions: ['admin_category/createCategory', 'admin_category/updateCategory'],
         ignoredPaths: ['payload'],
       },
 

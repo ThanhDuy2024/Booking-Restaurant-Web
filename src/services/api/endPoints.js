@@ -21,9 +21,19 @@ const endPoints = {
     createFood: `/api/admin/food/create`,
     editFood: (id) => `/api/admin/food/edit/${id}`,
     lockFood: (id) => `/api/admin/food/delete/${id}`,
-    getAllFood: (search, page, size) => buildUrlWithParams(`/api/admin/food/list`, {
-      search, page, size
-    })
+    getAllFood: (search, page) => buildUrlWithParams(`/api/admin/food/list`, {
+      search, page
+    }),
+
+    //staff
+    createStaff: `/api/admin/account-staff/create`,
+    editStaff: (id) => `/api/admin/account-staff/edit/${id}`,
+    lockAccountStaff: (id) => `/api/admin/account-staff/${id}`,
+    getAllStaffAccount: (search, page) => buildUrlWithParams(`/api/admin/account-staff/list`, {
+      search, page
+    }),
+
+
   },
 
   staff: {},

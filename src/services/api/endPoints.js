@@ -12,13 +12,14 @@ const endPoints = {
     createCategory: `/api/admin/category/create`,
     editCategory: (id) => `/api/admin/category/edit/${id}`,
     disabledCategory: (id) => `/api/admin/category/delete/${id}`,
-    getALlCategory: (search ,page, size, sort) => buildUrlWithParams(`/api/admin/category/list`, {
-      search,page, size, sort
+    getALlCategory: (search ,page) => buildUrlWithParams(`/api/admin/category/list`, {
+      search,page
     }),
+
 
     //food
     createFood: `/api/admin/food/create`,
-    eidtFood: (id) => `/api/admin/food/edit/${id}`,
+    editFood: (id) => `/api/admin/food/edit/${id}`,
     lockFood: (id) => `/api/admin/food/delete/${id}`,
     getAllFood: (search, page, size) => buildUrlWithParams(`/api/admin/food/list`, {
       search, page, size

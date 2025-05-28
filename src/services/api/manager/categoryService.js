@@ -1,11 +1,11 @@
 import apiClient from '@/services/api/apiClient';
 import endPoints from '@/services/api/endPoints';
 
-export const fetchCategory = async (search, page, size, sort) => {
+export const fetchCategory = async (search, page) => {
   try {
-    console.log('[DEBUG] URL gọi API:', endPoints.admin.getALlCategory(search, page, size, sort));
+    // console.log('[DEBUG] URL gọi API:', endPoints.admin.getALlCategory(search, page));
     const response = await apiClient.get(endPoints.admin.getALlCategory(
-      search, page, size, sort,
+      search, page,
     ));
     return response.data;
   } catch (error) {

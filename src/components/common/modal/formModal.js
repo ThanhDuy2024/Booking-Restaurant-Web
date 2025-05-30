@@ -33,7 +33,7 @@ export default function ReusableModal({
           </div>
         </DialogHeader>
 
-        <div className="py-4">{children}</div>
+        <div className="py-4 max-h-[80vh] overflow-y-auto pr-2">{children}</div>
 
         {footer && <DialogFooter>{footer}</DialogFooter>}
       </DialogContent>

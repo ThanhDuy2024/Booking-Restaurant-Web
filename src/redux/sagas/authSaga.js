@@ -52,6 +52,7 @@ function* checkAuth() {
     yield put(loginSuccess(user));
   } catch (error) {
     yield put(loginFailed('Không tìm thấy dữ liệu', error))
+    console.log('❌ Login error:', error);
   }
 }
 

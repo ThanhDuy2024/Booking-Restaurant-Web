@@ -12,8 +12,8 @@ const endPoints = {
     createCategory: `/api/admin/category/create`,
     editCategory: (id) => `/api/admin/category/edit/${id}`,
     disabledCategory: (id) => `/api/admin/category/delete/${id}`,
-    getALlCategory: (search ,page) => buildUrlWithParams(`/api/admin/category/list`, {
-      search,page
+    getAllCategory: (search, page, size, sort) => buildUrlWithParams(`/api/admin/category/list`, {
+      search, page, size, sort,
     }),
 
 
@@ -25,6 +25,14 @@ const endPoints = {
       search, page
     }),
 
+    //branch
+    createBranch: `/api/admin/branch/create`,
+    editBranch: (id) => `/api/admin/branch/edit/${id}`,
+    deleteBranch: (id) => `/api/admin/branch/delete/${id}`,
+    getAllBranch: (search, page) => buildUrlWithParams(`/api/admin/branch/list`, {
+      search, page,
+    }),
+
     //staff
     createStaff: `/api/admin/account-staff/create`,
     editStaff: (id) => `/api/admin/account-staff/edit/${id}`,
@@ -32,7 +40,6 @@ const endPoints = {
     getAllStaffAccount: (search, page) => buildUrlWithParams(`/api/admin/account-staff/list`, {
       search, page
     }),
-
 
   },
 

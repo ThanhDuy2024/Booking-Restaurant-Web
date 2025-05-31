@@ -3,17 +3,14 @@
 import SearchBar from '@/components/common/SearchBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { selectCategory, updateQuery } from '@/redux/slices/manager/categorySlice';
+import { updateQuery } from '@/redux/slices/manager/categorySlice';
 import Pagination from '@/components/common/Pagination';
 import CategoryCreateForm from '@/components/manager/Form/CreateCategoryForm';
-import CategoryUpdateForm from '@/components/manager/Form/UpdateCategoryForm';
-import Spinner from '@/components/common/loading/Spinner';
 
 export default function CategoryManage() {
   const [openModalCreate, setOpenModalCreate] = useState(false);
-  const [openModalUpdate, setOpenModalUpdate] = useState(false);
   const dispatch = useDispatch();
-  const { items, query, loading, error, pagination, selectedItem } = useSelector(state => state.admin_category);
+  const { items, query, loading, error, pagination } = useSelector(state => state.admin_category);
 
   useEffect(() => {
     dispatch({ type: 'admin_category/fetchCategory' });
@@ -21,12 +18,7 @@ export default function CategoryManage() {
 
 
   const handleSearch = (keyword) => {
-    dispatch(updateQuery({search: keyword}))
-  };
-
-  const handleClickRow = (item) => {
-    dispatch(selectCategory(item._id));
-    setOpenModalUpdate(true);
+    console.log('Tìm kiếm:', keyword);
   };
 
   return (
@@ -37,13 +29,13 @@ export default function CategoryManage() {
         </h2>
         <SearchBar onSearch={handleSearch} />
         <button onClick={() => setOpenModalCreate(true)}
-                className="flex gap-2 items-center bg-primary text-white rounded-lg hover:bg-primary-dark transition">
+          className="flex gap-2 items-center bg-primary text-white rounded-lg hover:bg-primary-dark transition">
           <img src="/icons/manager/icon_add_color.png" alt="Add"
                className="w-12 h-12 bg-white border-2 border-[var(--primary)] rounded-l-lg" />
           <span className={`pr-4 py-2`}>Thêm danh mục</span>
         </button>
       </div>
-      {loading && <Spinner type="PacmanLoader" color="#000000" size={60} delay={2000} />}
+
       <div className="overflow-x-auto rounded-lg border border-gray-200">
         <table className="w-full text-left bg-white">
           <thead className="bg-gray-200 text-sm text-gray-600 uppercase">
@@ -62,7 +54,6 @@ export default function CategoryManage() {
               items.map((item) => (
                 <tr
                   key={item._id}
-                  onClick={() => handleClickRow(item)}
                   className="border-y hover:bg-gradient-to-r from-violet-200 to-amber-200 transition duration-1000 cursor-pointer ">
                   <td className="px-6 py-4 flex items-center gap-4">
                     <img className={`w-10 h-10 rounded-2xl`} src={item.avatar} alt="" />
@@ -84,7 +75,7 @@ export default function CategoryManage() {
         </table>
         <Pagination
           currentPage={query.page || 1}
-          totalPages={pagination.pages}
+          totalPages={5}
           onPageChange={(newPage) => {
             dispatch(updateQuery({ page: newPage }));
           }}
@@ -92,13 +83,6 @@ export default function CategoryManage() {
 
       </div>
       <CategoryCreateForm open={openModalCreate} onClose={setOpenModalCreate} />
-      {openModalUpdate && selectedItem && (
-        <CategoryUpdateForm
-          open={openModalUpdate}
-          onClose={setOpenModalUpdate}
-          item={selectedItem}
-        />
-      )}
     </div>
 
   );

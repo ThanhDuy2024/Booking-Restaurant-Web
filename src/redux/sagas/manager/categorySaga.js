@@ -1,23 +1,30 @@
 import {
   createCategoryFailed,
-  createCategoryRequest, createCategorySuccess, deleteCategoryFailed, deleteCategoryRequest, deleteCategorySuccess,
+  createCategoryRequest,
+  createCategorySuccess,
+  deleteCategoryFailed,
+  deleteCategoryRequest,
+  deleteCategorySuccess,
   getCategoryFailed,
   getCategoryRequest,
-  getCategorySuccess, updateCategoryFailed, updateCategoryRequest, updateCategorySuccess,
+  getCategorySuccess,
+  updateCategoryFailed,
+  updateCategoryRequest,
+  updateCategorySuccess,
 } from '@/redux/slices/manager/categorySlice';
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { showToast } from '@/lib/utils';
 import { fetchStaffAccount } from '@/services/api/manager/staffService';
 
-
 function* handleFetchCategory() {
   try {
-
     yield put(getCategoryRequest());
-    const { search, page } = yield select(state => state.admin_category.query);
-    const data = yield call(fetchStaffAccount, search, page);
-    const { staffList, pages } = data;
-    yield put(getCategorySuccess({ items: staffList, pages }));
+    const { search, page } = yield select(
+      (state) => state.admin_category.query
+    );
+    const data = yield call(fetchCategory, search, page);
+    const { categoryList, pages } = data;
+    yield put(getCategorySuccess({ items: categoryList, pages }));
   } catch (error) {
     const message = error.response?.data?.message || 'Lấy dữ liệu thất bại';
     yield put(getCategoryFailed(message));
@@ -43,16 +50,12 @@ function* handleCreateCategory(action) {
 function* handleUpdateCategory(action) {
   try {
     yield put(updateCategoryRequest());
-
     const { id, update } = action.payload;
-    yield call(editCategory, id, update);
-
-    yield put(updateCategorySuccess({ id }));
-    showToast('Cập nhật danh mục thành công', { type: 'success' });
-
-    yield put({ type: 'admin_category/fetchCategory' });
+    yield call(editCategory(id), update);
+    yield put(updateCategorySuccess({ id, update }));
   } catch (error) {
-    const message = error.response?.data?.message || 'Cập nhật dang mục thất bại';
+    const message =
+      error.response?.data?.message || 'Cập nhật dang mục thất bại';
     yield put(updateCategoryFailed(message));
     showToast(message, { type: 'error' });
   }

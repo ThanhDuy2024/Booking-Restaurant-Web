@@ -11,7 +11,6 @@ import staffSaga from './sagas/manager/staffSaga';
 import staffReducer from './slices/manager/staffSlice';
 import branchReducer from './slices/manager/branchSlice';
 
-
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
@@ -29,16 +28,9 @@ export const store = configureStore({
         ignoredActions: [
           'admin_category/createCategory',
           'admin_category/updateCategory',
-          'admin_food/createFood',
-          'admin_food/updateFood',
-          'admin_staff/createStaff',
-          'admin_staff/updateStaff',
-          'admin_branch/createBranch',
-          'admin_branch/updateBranch',
         ],
         ignoredPaths: ['payload'],
       },
-
     }).concat(sagaMiddleware),
 });
 

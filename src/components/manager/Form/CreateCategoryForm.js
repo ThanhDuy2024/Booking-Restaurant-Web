@@ -4,6 +4,9 @@ import { useState } from 'react';
 import AppButton from '@/components/common/AppButton';
 import ReusableModal from '@/components/common/modal/formModal';
 import { useDispatch } from 'react-redux';
+import { hasWarned } from 'framer-motion';
+import apiClient from '@/services/api/apiClient';
+import { createCategory } from '@/services/api/manager/categoryService';
 
 export default function CategoryCreateForm({ open, onClose }) {
   const dispatch = useDispatch();
@@ -64,7 +67,7 @@ export default function CategoryCreateForm({ open, onClose }) {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-text mb-2">Ảnh</label>
+          <label className="block text-sm font-text mb-2">Ảnh (URL)</label>
           <input
             type="file"
             accept="image/*"

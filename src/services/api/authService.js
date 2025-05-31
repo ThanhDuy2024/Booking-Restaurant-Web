@@ -24,6 +24,7 @@ export const logoutService = async () => {
 export const getMe = async () => {
   try {
     const response = await apiClient.get(endPoints.auth.getProfile);
+    console.log('response', response);
     return response.data;
   } catch (error) {
     console.error('Get current user failed', error);

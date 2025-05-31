@@ -26,7 +26,8 @@ const LineChart = ({
                      titleChart,
                      labelDataset,
                      labelsChart,
-                     dataChart
+                     dataChart,
+  stepSize
                    }) => {
   const options = {
     responsive: true,
@@ -43,9 +44,9 @@ const LineChart = ({
     scales: {
       y: {
         min: 0,
-        max: Math.max(...dataChart) + 500,
+        max: Math.max(...dataChart) + stepSize,
         ticks:{
-          stepSize: 500,
+          stepSize: stepSize,
         }
       }
     }
@@ -58,11 +59,11 @@ const LineChart = ({
     datasets: [{
       label: labelDataset,
       data: dataChart,
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      borderColor: 'rgb(42,163,8)',
+      backgroundColor: 'rgb(22,122,0)',
     }
     ]
   }
-  return <Line options={options} data={data} className={'!h-52'}/>
+  return <Line options={options} data={data} className={'!h-64'}/>
 }
 export default LineChart;

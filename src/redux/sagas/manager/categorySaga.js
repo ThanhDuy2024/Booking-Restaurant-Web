@@ -14,9 +14,9 @@ function* handleFetchCategory() {
   try {
 
     yield put(getCategoryRequest());
-    const { search, page } = yield select(state => state.admin_category.query);
-    const data = yield call(fetchCategory, search, page);
-    const { categoryList, pages } = data;
+    const { search, page, size, sort } = yield select(state => state.admin_category.query);
+    const data = yield call(fetchCategory, search, page, size, sort);
+    const { categoryList, pages  } = data;
     yield put(getCategorySuccess({ items: categoryList, pages }));
   } catch (error) {
     const message = error.response?.data?.message || 'Lấy dữ liệu thất bại';
@@ -43,14 +43,9 @@ function* handleCreateCategory(action) {
 function* handleUpdateCategory(action) {
   try {
     yield put(updateCategoryRequest());
-
     const { id, update } = action.payload;
-    yield call(editCategory, id, update);
-
-    yield put(updateCategorySuccess({ id }));
-    showToast('Cập nhật danh mục thành công', { type: 'success' });
-
-    yield put({ type: 'admin_category/fetchCategory' });
+    yield call(editCategory(id), update);
+    yield put(updateCategorySuccess({ id, update }));
   } catch (error) {
     const message = error.response?.data?.message || 'Cập nhật dang mục thất bại';
     yield put(updateCategoryFailed(message));

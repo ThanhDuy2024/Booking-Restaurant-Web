@@ -9,6 +9,7 @@ const initialState = {
   query: {
     search: null,
     page: null,
+    size: null,
   },
   loading: false,
   error: null,
@@ -60,7 +61,14 @@ const categorySlice = createSlice({
 
     updateCategorySuccess(state, action){
       state.loading = false;
-      state.error = null;
+      const {id, update} = action.payload;
+      const index = state.items.findIndex(item => item.id === id);
+      if(index !== -1) {
+        state.items[index] = {
+          ...state.items[index],
+          ...update
+        };
+      }
     },
 
     updateCategoryFailed(state, action) {
@@ -88,7 +96,7 @@ const categorySlice = createSlice({
     // ========== SELECT ==========
     selectCategory(state, action) {
       const id = action.payload;
-      state.selectedItem = state.items.find(item => item._id === id) || null;
+      state.selectedItem = state.items.find(item => item.id === id) || null;
     },
 
     clearSelectedCategory(state) {
@@ -100,6 +108,7 @@ const categorySlice = createSlice({
       state.query = {
         ...state.query,
         ...action.payload,
+        page: 1
       };
     }
   }

@@ -1,13 +1,19 @@
 import React from 'react';
 import { useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const router = useRouter();
   return (
     <header className="py-5 md:py-8 sticky top-0 z-40 bg-yellow-400 shadow-2xl">
       <div className="max-w[1480px] w-full px-5 mx-auto py-0 ">
         <div className="flex items-center justify-between">
           <div href="/" className="w-[80px] lg:w-[130px] block flex-shrink-0">
             <img
+              onClick={() => {
+                router.push('/');
+              }}
               className="block max-w-full object-cover"
               src="/fonts/images/logo.webp"
               alt="Darion"
@@ -28,36 +34,36 @@ export default function Header() {
           <nav className="flex items-center  lg:gap-10 xl:gap-28 ">
             <ul className="lg:flex hidden items-center gap-6">
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/"
                   className="relative after:absolute after:h-[1.5px] after:bg-black after:left-0 after:bottom-[-2px] hover:after:scale-x-100 after:scale-x-0 after:w-full after:transition-all after:duration-300"
                 >
                   Trang Chủ
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="/menu"
                   className="relative after:absolute after:h-[1.5px] after:bg-black after:left-0 after:bottom-[-2px] hover:after:scale-x-100 after:scale-x-0 after:w-full after:transition-all after:duration-300"
                 >
                   Menu
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="location"
                   className="relative after:absolute after:h-[1.5px] after:bg-black after:left-0 after:bottom-[-2px] hover:after:scale-x-100 after:scale-x-0 after:w-full after:transition-all after:duration-300"
                 >
                   Chi Nhánh
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  href="news"
                   className="relative after:absolute after:h-[1.5px] after:bg-black after:left-0 after:bottom-[-2px] hover:after:scale-x-100 after:scale-x-0 after:w-full after:transition-all after:duration-300"
                 >
                   Liên Hệ
-                </a>
+                </Link>
               </li>
               <hr />
               <li>
@@ -93,36 +99,36 @@ export default function Header() {
               <div className=" fixed top-0 left-0 w-64 h-full bg-gray-900 text-white z-40 p-6 space-y-6 shadow-lg  ">
                 <ul className="divide-y divide-gray-600 space-y-4">
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      href="/"
                       className="block hover:text-yellow-300 text-lg  "
                     >
                       Trang Chủ
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      href="/menu"
                       className="block hover:text-yellow-300 text-lg  "
                     >
                       Menu
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      href="/location"
                       className="block hover:text-yellow-300 text-lg "
                     >
                       Chi Nhánh
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="#"
+                    <Link
+                      href="/news"
                       className="block hover:text-yellow-300 text-lg "
                     >
                       Liên Hệ
-                    </a>
+                    </Link>
                   </li>
                 </ul>
                 <button className="w-full bg-yellow-400 hover:bg-white text-black font-semibold py-2  transition border-2 border-collapse">

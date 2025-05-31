@@ -19,7 +19,11 @@ function* handleLogin(action) {
     });
 
     yield delay(2000);
+    console.log('✅ Dispatch loginSuccess');
+
     const user = yield call(getMe);
+
+    console.log('✅ Dispatch getMe');
     yield delay(1000);
 
     yield put(loginSuccess(user));

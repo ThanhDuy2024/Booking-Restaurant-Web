@@ -2,10 +2,10 @@
 import SearchBar from '@/components/common/SearchBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { selectCategory, updateQuery } from '@/redux/slices/manager/categorySlice';
+import { selectBranch, updateQuery } from '@/redux/slices/manager/branchSlice';
 import Pagination from '@/components/common/Pagination';
 import BranchCreateForm from '@/components/manager/Form/CreateBranchForm';
-import CategoryUpdateForm from '@/components/manager/Form/UpdateCategoryForm';
+import BranchUpdateForm from '@/components/manager/Form/UpdateBranchForm';
 import Spinner from '@/components/common/loading/Spinner';
 
 const BranchManagerPage = () => {
@@ -24,7 +24,7 @@ const BranchManagerPage = () => {
   };
 
   const handleClickRow = (item) => {
-    dispatch(selectCategory(item._id));
+    dispatch(selectBranch(item._id));
     setOpenModalUpdate(true);
   };
 
@@ -93,7 +93,7 @@ const BranchManagerPage = () => {
       <BranchCreateForm
          open={openModalCreate} onClose={setOpenModalCreate} />
       {openModalUpdate && selectedBranch && (
-        <CategoryUpdateForm
+        <BranchUpdateForm
           open={openModalUpdate}
           onClose={setOpenModalUpdate}
           item={selectedBranch}

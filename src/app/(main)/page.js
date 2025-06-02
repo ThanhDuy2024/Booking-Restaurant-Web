@@ -124,7 +124,7 @@ export default function HomePages() {
             </a>
           </div>
 
-          <ul className="mt-8 lg:grid grid-cols-4 gap-7">
+          <ul className="mt-8 lg:grid grid-cols-4 gap-7 md:grid grid-rows-1 md:gap-10">
             {currentItems.map((item) => (
               <li
                 key={item.id}
@@ -175,7 +175,7 @@ export default function HomePages() {
                           <span className="line-through text-green-500 mr-2">
                             ${item.price.toFixed(2)}
                           </span>
-                          <span>-</span>
+                          <span> - </span>
                           <span>
                             $
                             {(item.price * (1 - item.discount / 100)).toFixed(

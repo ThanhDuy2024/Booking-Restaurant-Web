@@ -16,11 +16,7 @@ export const fetchCategory = async (search, page) => {
 
 export const createCategory = async (createForm) => {
   try {
-    const response = await apiClient.post(endPoints.admin.createCategory, createForm, {
-      headers: {
-        'Content-Type' : 'multipart/form-data',
-      }
-    });
+    const response = await apiClient.post(endPoints.admin.createCategory, createForm);
     return response.data;
   } catch (error) {
     // console.error('Create failed:', error);

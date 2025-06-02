@@ -33,20 +33,6 @@ module.exports = {
         heading: 'var(--heading)',
         background: 'var(--background)',
       },
-      keyframes: {
-        slideInLeft: {
-          '0%': { transform: 'translateX(-100%)', opacity: '0' },
-          '100%': { transform: 'translateX(0)', opacity: '1' },
-        },
-        zoomIn: {
-          '0%': { transform: 'scale(1.2)', opacity: '0' },
-          '100%': { transform: 'scale(1)', opacity: '1' },
-        },
-      },
-      animation: {
-        slideInLeft: 'slideInLeft 0.8s ease-in forwards',
-        zoomIn: 'zoomIn 1s ease-in forwards',
-      },
     },
   },
 };

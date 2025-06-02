@@ -13,6 +13,7 @@ import branchReducer from './slices/manager/branchSlice';
 import clientCategoryReducer from './slices/common/categorySlice';
 import clientCategorySaga from '@/redux/sagas/common/clientCategorySaga';
 
+
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
@@ -40,6 +41,7 @@ export const store = configureStore({
         ],
         ignoredPaths: ['payload'],
       },
+
     }).concat(sagaMiddleware),
 });
 

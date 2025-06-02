@@ -4,7 +4,7 @@ import endPoints from '@/services/api/endPoints';
 export const fetchFood = async (search, page) => {
   try {
     // console.log('[DEBUG] URL gọi API:', endPoints.admin.getAllFood(search, page));
-    const response = await apiClient.get(endPoints.admin.getAllFood(search, sort));
+    const response = await apiClient.get(endPoints.admin.getAllFood(search, page));
     return response.data;
   } catch (error) {
     throw error;

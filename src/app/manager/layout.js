@@ -29,11 +29,11 @@ export default function ManagerLayout({ children }) {
   };
 
   useEffect(() => {
-    dispatch(checkAuthRequest()); // ✅ chỉ gọi 1 lần khi load trang
+    dispatch(checkAuthRequest());
   }, [dispatch]);
 
   useEffect(() => {
-    if (user === null) return; // chờ redux load xong
+    if (user === null) return;
 
     if (!user) {
       router.push('/login');

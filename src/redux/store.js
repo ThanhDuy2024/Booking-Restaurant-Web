@@ -10,6 +10,8 @@ import foodSaga from '@/redux/sagas/manager/foodSaga';
 import staffSaga from './sagas/manager/staffSaga';
 import staffReducer from './slices/manager/staffSlice';
 import branchReducer from './slices/manager/branchSlice';
+import clientCategoryReducer from './slices/common/categorySlice';
+import clientCategorySaga from '@/redux/sagas/common/clientCategorySaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -20,6 +22,7 @@ export const store = configureStore({
     admin_food: foodReducer,
     admin_staff: staffReducer,
     admin_branch: branchReducer,
+    client_category: clientCategoryReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -28,6 +31,12 @@ export const store = configureStore({
         ignoredActions: [
           'admin_category/createCategory',
           'admin_category/updateCategory',
+          'admin_branch/createBranch',
+          'admin_branch/updateBranch',
+          'admin_food/createFood',
+          'admin_food/updateFood',
+          'admin_staff/createStaff',
+          'admin_staff/updateStaff',
         ],
         ignoredPaths: ['payload'],
       },
@@ -39,3 +48,4 @@ sagaMiddleware.run(categorySaga);
 sagaMiddleware.run(foodSaga);
 sagaMiddleware.run(staffSaga);
 sagaMiddleware.run(branchSaga);
+sagaMiddleware.run(clientCategorySaga)

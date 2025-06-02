@@ -9,7 +9,6 @@ const initialState = {
   query: {
     search: null,
     page: null,
-    size: null,
   },
   loading: false,
   error: null,

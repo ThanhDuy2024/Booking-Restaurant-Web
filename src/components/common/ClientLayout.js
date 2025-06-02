@@ -13,8 +13,8 @@ export default function ClientLayoutRedirect() {
 
   useEffect(() => {
     if (!user) return;
-
     const publicPages = ['/', '/login'];
+
     if (!publicPages.includes(pathname)) return;
     console.log('user Role = ' + user.role)
 

@@ -22,7 +22,7 @@ const endPoints = {
     editFood: (id) => `/api/admin/food/edit/${id}`,
     lockFood: (id) => `/api/admin/food/delete/${id}`,
     getAllFood: (search, page) => buildUrlWithParams(`/api/admin/food/list`, {
-      search, page
+      search, page,
     }),
 
     //branch
@@ -38,13 +38,18 @@ const endPoints = {
     editStaff: (id) => `/api/admin/account-staff/edit/${id}`,
     lockAccountStaff: (id) => `/api/admin/account-staff/${id}`,
     getAllStaffAccount: (search, page) => buildUrlWithParams(`/api/admin/account-staff/list`, {
-      search, page
+      search, page,
     }),
 
   },
 
   staff: {},
-  common: {},
+  common: {
+    getCategory: (search, page) => buildUrlWithParams(`/api/client/category/list`, {
+      search, page,
+    }),
+    // getFood: (search, page) => buildUrlWithParams(`/api/client/food`)
+  },
 };
 
 export default endPoints;

@@ -15,6 +15,7 @@ import {
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { showToast } from '@/lib/utils';
 import { fetchStaffAccount } from '@/services/api/manager/staffService';
+import { fetchCategory } from '@/services/api/manager/categoryService';
 
 function* handleFetchCategory() {
   try {

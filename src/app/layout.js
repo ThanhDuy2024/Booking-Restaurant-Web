@@ -21,8 +21,8 @@ export default function RootLayout({ children }) {
     <ThemeProvider theme={theme}>
       <ReduxProvider>
         <ToastProvider>
-          <AuthCheck />
-          <ClientLayoutRedirect />
+          {/*<AuthCheck />*/}
+          {/*<ClientLayoutRedirect />*/}
           {children}
         </ToastProvider>
       </ReduxProvider>

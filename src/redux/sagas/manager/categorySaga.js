@@ -8,7 +8,7 @@ import {
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { showToast } from '@/lib/utils';
 import { fetchStaffAccount } from '@/services/api/manager/staffService';
-import { fetchCategory } from '@/services/api/manager/categoryService';
+import { createCategory, fetchCategory } from '@/services/api/manager/categoryService';
 
 
 function* handleFetchCategory() {
@@ -16,9 +16,9 @@ function* handleFetchCategory() {
 
     yield put(getCategoryRequest());
     const { search, page } = yield select(state => state.admin_category.query);
-    const data = yield call(fetchStaffAccount, search, page);
-    const { staffList, pages } = data;
-    yield put(getCategorySuccess({ items: staffList, pages }));
+    const data = yield call(fetchCategory, search, page);
+    const { categoryList, pages } = data;
+    yield put(getCategorySuccess({ items: categoryList, pages }));
   } catch (error) {
     const message = error.response?.data?.message || 'Lấy dữ liệu thất bại';
     yield put(getCategoryFailed(message));

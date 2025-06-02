@@ -4,7 +4,7 @@ import endPoints from '@/services/api/endPoints';
 export const fetchCategory = async (search, page) => {
   try {
     // console.log('[DEBUG] URL gọi API:', endPoints.admin.getALlCategory(search, page));
-    const response = await apiClient.get(endPoints.admin.getALlCategory(
+    const response = await apiClient.get(endPoints.admin.getAllCategory(
       search, page,
     ));
     return response.data;

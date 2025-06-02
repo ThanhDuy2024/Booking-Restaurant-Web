@@ -26,7 +26,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div className="lg:hidden">
+            <div className="lg:hidden md:hidden">
               <h3 className="font-bold text-lg mb-4 ">Hỗ Trợ Khách Hàng</h3>
               <ul className="space-y-2">
                 <li>

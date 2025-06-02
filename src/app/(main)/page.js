@@ -4,7 +4,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link'
 
 export default function HomePages() {
   const menuItems = [
@@ -263,11 +262,9 @@ export default function HomePages() {
                 Trải Nghiệm Ẩm Thực Tuyệt Vời
               </h2>
               <div className="flex justify-center">
-                <Link
-                  href={'/booking'}
-                  className=" bg-white h-9 border border-black px-7 inline-flex items-center font-semibold text-black rounded-full text-[15px] hover:bg-black hover:text-white transition-all duration-300">
+                <button className=" bg-white h-9 border border-black px-7 inline-flex items-center font-semibold text-black rounded-full text-[15px] hover:bg-black hover:text-white transition-all duration-300">
                   Đặt Bàn Ngay
-                </Link>
+                </button>
               </div>
             </div>
 

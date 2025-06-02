@@ -29,7 +29,6 @@ const branchSlice = createSlice({
       state.branches = action.payload.branches;
       state.pagination.pages = action.payload.pages;
       state.error = null;
-      console.log(state.branches);
     },
 
     getBranchFailed(state, action) {
@@ -45,7 +44,7 @@ const branchSlice = createSlice({
 
     createBranchSuccess(state, action) {
       state.loading = false;
-      state.branches.unshift(action.payload);
+      state.items.unshift(action.payload);
     },
 
     createBranchFailed(state, action) {
@@ -61,14 +60,7 @@ const branchSlice = createSlice({
 
     updateBranchSuccess(state, action){
       state.loading = false;
-      const {id, update} = action.payload;
-      const index = state.branches.findIndex(item => item.id === id);
-      if(index !== -1) {
-        state.branches[index] = {
-          ...state.branches[index],
-          ...update
-        };
-      }
+      state.error = null;
     },
 
     updateBranchFailed(state, action) {
@@ -85,7 +77,7 @@ const branchSlice = createSlice({
     deleteBranchSuccess(state, action){
       state.loading = false;
       const id = action.payload;
-      state.branches = state.branches.filter(item => item._id !== id);
+      state.items = state.items.filter(item => item.id !== id);
     },
 
     deleteBranchFailed(state, action) {
@@ -96,14 +88,8 @@ const branchSlice = createSlice({
     // ========== SELECT ==========
     selectBranch(state, action) {
       const id = action.payload;
-      const branchesCopy = JSON.parse(JSON.stringify(state.branches)); // deep clone tránh Proxy
-      const selected = branchesCopy.find(item => item._id === id) || 'a';
-      state.selectedBranch = selected;
-
-      console.log('branches:', branchesCopy);
-      console.log('selected branch:', selected);
+      state.selectedItem = state.items.find(item => item._id === id) || null;
     },
-
 
     clearSelectedBranch(state) {
       state.selectedItem = null;

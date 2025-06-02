@@ -144,7 +144,7 @@ export default function MenuPage() {
             </div>
             {/* Món ăn */}
             <div className="col-span-4 p-4">
-              <ul className="mt-8 lg:grid grid-cols-4 gap-7 ">
+              <ul className="mt-8 lg:grid grid-cols-4 gap-7 md:grid grid-rows-1 md:gap-10 ">
                 {currentItems.map((item) => (
                   <li
                     key={item.id}
@@ -152,7 +152,7 @@ export default function MenuPage() {
                   >
                     <div
                       href="#"
-                      className="block  shadow-sm rounded-xl  transition-all duration-300"
+                      className="block  shadow-sm rounded-xl  transition-all duration-300 "
                     >
                       {item.status === 'unactive' && (
                         <span className="absolute py-1 text-xs px-2 top-3 left-3 bg-red-500 text-white rounded-xl">
@@ -165,7 +165,7 @@ export default function MenuPage() {
                         </span>
                       )}
 
-                      <div className="rounded-xl  bg-white lg:h-[385px] ">
+                      <div className="rounded-xl  bg-white lg:h-[385px]  ">
                         <img
                           className="block w-full h-full object-cover"
                           src={item.image}
@@ -190,7 +190,7 @@ export default function MenuPage() {
                       <h3 className="text-15 mt-2 font-semibold">
                         {item.name}
                       </h3>
-                      <div className="mt-2 relative h-5 overflow-hidden">
+                      <div className="mt-2  relative h-5 overflow-hidden">
                         <div className="absolute flex items-center flex-col left-1/2 -translate-x-1/2 hover:bottom-0 -bottom-5 transition-all duration-300">
                           <div className="flex items-center justify-center font-bold text-15 text-center">
                             {item.discount > 0 ? (
@@ -216,7 +216,7 @@ export default function MenuPage() {
                           {item.status === 'active' && (
                             <a
                               href="#"
-                              className="uppercase text-xs font-medium relative after:absolute after:bottom-0 after:w-0 after:h-[1px] after:bg-black after:left-0 hover:after:w-full after:transition-all after:duration-500"
+                              className=" uppercase text-xs font-medium relative  after:absolute after:bottom-0 after:w-0 after:h-[1px] after:bg-black after:left-0 hover:after:w-full after:transition-all after:duration-500"
                             >
                               Add to cart
                             </a>

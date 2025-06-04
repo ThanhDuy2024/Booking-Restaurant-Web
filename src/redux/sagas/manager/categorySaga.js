@@ -7,7 +7,6 @@ import {
 } from '@/redux/slices/manager/categorySlice';
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { showToast } from '@/lib/utils';
-import { fetchStaffAccount } from '@/services/api/manager/staffService';
 import { createCategory, fetchCategory } from '@/services/api/manager/categoryService';
 
 
@@ -17,6 +16,7 @@ function* handleFetchCategory() {
     yield put(getCategoryRequest());
     const { search, page } = yield select(state => state.admin_category.query);
     const data = yield call(fetchCategory, search, page);
+
     const { categoryList, pages } = data;
     yield put(getCategorySuccess({ items: categoryList, pages }));
   } catch (error) {

@@ -67,12 +67,12 @@ export default function Header() {
               </li>
               <hr />
               <li>
-                <button
-                  href="#"
-                  className="relative bg-black text-white rounded-full w-[120px] py-2 overflow-hidden transition duration-300 ease-in-out hover:bg-white hover:text-black  shadow-md hover:shadow-lg"
+                <Link
+                  href="/booking"
+                  className="relative bg-black text-white rounded-full w-[120px] py-2 px-4 overflow-hidden transition duration-300 ease-in-out hover:bg-white hover:text-black  shadow-md hover:shadow-lg"
                 >
                   Đặt Bàn
-                </button>
+                </Link>
               </li>
             </ul>
           </nav>

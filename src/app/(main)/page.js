@@ -10,7 +10,7 @@ export default function HomePages() {
     {
       id: 1,
       name: 'Phở Bò Truyền Thống',
-      image: '/fonts/images/product.jpg',
+      image: '/images/product.jpg',
       position: 1,
       status: 'active',
       price: 120,
@@ -20,7 +20,7 @@ export default function HomePages() {
     {
       id: 2,
       name: 'Gỏi Cuốn Tôm Thịt',
-      image: '/fonts/images/product.jpg',
+      image: '/images/product.jpg',
       position: 2,
       status: 'unactive',
       price: 60,
@@ -30,7 +30,7 @@ export default function HomePages() {
     {
       id: 3,
       name: 'Chè Dừa Non',
-      image: '/fonts/images/product.jpg',
+      image: '/images/product.jpg',
       position: 3,
       status: 'active',
       price: 45,
@@ -40,7 +40,7 @@ export default function HomePages() {
     {
       id: 4,
       name: 'Chè Dừa Non',
-      image: '/fonts/images/product.jpg',
+      image: '/images/product.jpg',
       position: 4,
       status: 'active',
       price: 45,
@@ -50,7 +50,7 @@ export default function HomePages() {
     {
       id: 5,
       name: 'Chè Dừa Non',
-      image: '/fonts/images/product.jpg',
+      image: '/images/product.jpg',
       position: 5,
       status: 'active',
       price: 45,
@@ -72,7 +72,7 @@ export default function HomePages() {
       <section className="relative text-center">
         <img
           className="h-full w-full object-cover animate-zoomIn"
-          src="/fonts/images/banner1.jpg"
+          src="/images/banner1.jpg"
           alt=""
         />
         <div className="absolute w-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
@@ -93,19 +93,19 @@ export default function HomePages() {
         <div className="max-w[1480px] w-full px-5 mx-auto py-0">
           <ul className="grid grid-cols-2 lg:grid-cols-4 gap-5 items-center py-14">
             <li className="flex items-center lg:justify-center flex-1 gap-[15px]">
-              <img src="/fonts/icons/ico_freeship.svg" alt="" />
+              <img src="/icons/common/ico_freeship.svg" alt="" />
               <span>Miễn Phí Giao Hàng</span>
             </li>
             <li className="flex items-center lg:justify-center flex-1 gap-[15px]">
-              <img src="/fonts/icons/ico_quality.svg" alt="" />
+              <img src="/icons/common/ico_quality.svg" alt="" />
               <span>Đảm Bảo Chất Lượng</span>
             </li>
             <li className="flex items-center lg:justify-center flex-1 gap-[15px]">
-              <img src="/fonts/icons/ico_return.svg" alt="" />
+              <img src="/icons/common/ico_return.svg" alt="" />
               <span>Hoàn Trả Trong 14 Ngày</span>
             </li>
             <li className="flex items-center lg:justify-center flex-1 gap-[15px]">
-              <img src="/fonts/icons/ico_support.svg" alt="" />
+              <img src="/icons/common/ico_support.svg" alt="" />
               <span>Hỗ Trợ 24/7</span>
             </li>
           </ul>
@@ -157,8 +157,8 @@ export default function HomePages() {
                         className="size-5 inline-block"
                         src={
                           star <= item.stars
-                            ? '/fonts/images/ico_star_active.png'
-                            : '/fonts/images/ico_star_gray.png'
+                            ? '/images/ico_star_active.png'
+                            : '/images/ico_star_gray.png'
                         }
                         alt="Star Rating"
                       />
@@ -213,7 +213,7 @@ export default function HomePages() {
                 >
                   <img
                     className="size-4"
-                    src="/fonts/images/ico_chevron_left.png"
+                    src="/images/ico_chevron_left.png"
                     alt="Previous"
                   />
                 </button>
@@ -242,7 +242,7 @@ export default function HomePages() {
                 >
                   <img
                     className="size-4"
-                    src="/fonts/images/ico_chevron_right.png"
+                    src="/images/ico_chevron_right.png"
                     alt="Next"
                   />
                 </button>
@@ -271,7 +271,7 @@ export default function HomePages() {
             <div className="rounded-2xl overflow-hidden mt-6 lg:mt-0">
               <img
                 className="image hover:scale-110 duration-500 transition-all w-full"
-                src="/fonts/images/banner4.png"
+                src="/images/banner4.png"
                 alt=""
               />
             </div>

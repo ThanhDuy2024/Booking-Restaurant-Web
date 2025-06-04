@@ -15,14 +15,14 @@ export default function Header() {
                 router.push('/');
               }}
               className="block max-w-full object-cover"
-              src="/fonts/images/logo.webp"
+              src="/images/logo.webp"
               alt="Darion"
             />
           </div>
           <div className="lg:flex hidden relative items-center  border-2 border-black  w-[400px] rounded-full mx-5">
             <img
               className="  block max-w-full object-cover size-5 absolute left-3"
-              src="/fonts/icons/ico_search.png"
+              src="/icons/common/ico_search.png"
               alt="Search"
             />
             <input
@@ -131,7 +131,10 @@ export default function Header() {
                     </Link>
                   </li>
                 </ul>
-                <button className="w-full bg-yellow-400 hover:bg-white text-black font-semibold py-2  transition border-2 border-collapse">
+                <button
+                  href="/booking"
+                  className="w-full bg-yellow-400 hover:bg-white text-black font-semibold py-2  transition border-2 border-collapse"
+                >
                   Đặt Bàn
                 </button>
                 <button

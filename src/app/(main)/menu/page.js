@@ -5,6 +5,8 @@ import { updateQuery } from '@/redux/slices/common/foodSlice';
 import Pagination from '@/components/common/Pagination';
 
 export default function MenuPage() {
+  const categories = ['Phở', 'Gỏi Cuốn', 'Chè', 'Bánh', 'Cơm'];
+
   const menuItems1 = [
     { id: 1, name: 'Phở Bò', category: 'Phở' },
     { id: 2, name: 'Phở Gà', category: 'Phở' },
@@ -40,7 +42,7 @@ export default function MenuPage() {
   return (
     <main>
       <section className="relative">
-        <img src="/fonts/images/img_product_list_banner.webp" alt="Banner" />
+        <img src="/images/img_product_list_banner.webp" alt="Banner" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
           <h2 className="text-4xl font-semibold text-white">Menu</h2>
         </div>
@@ -121,8 +123,8 @@ export default function MenuPage() {
                             className="w-5 h-5 inline-block"
                             src={
                               star <= item.stars
-                                ? '/fonts/images/ico_star_active.png'
-                                : '/fonts/images/ico_star_gray.png'
+                                ? '/images/ico_star_active.png'
+                                : '/images/ico_star_gray.png'
                             }
                             alt="Star Rating"
                           />

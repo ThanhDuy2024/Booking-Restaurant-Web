@@ -58,7 +58,7 @@ export default function CategoryManage() {
           </thead>
           <tbody
             className="text-sm font-text text-gray-700">
-          {items.length > 0 ? (
+          {items && items.length > 0 ? (
               items.map((item) => (
                 <tr
                   key={item._id}

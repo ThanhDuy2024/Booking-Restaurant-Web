@@ -9,10 +9,15 @@
 // allowing the entry of revenue and expenditure data
 // that is not available in the system (such as purchases or repair fees,...)
 
-
+'use client'
 import LineChart from '@/lib/charts/Line';
 
 const FinanceManagerPage = () => {
+
+  const formattedNumber = (number) => {
+    return new Intl.NumberFormat('vi-VN', {}).format(number);
+  };
+
   return (
     <div className={'w-full h-full flex flex-col justify-center items-center mt-10'}>
       {/*First, we will show the total cash, total transfers and all of them*/}
@@ -22,18 +27,19 @@ const FinanceManagerPage = () => {
           <form className={'w-fit border-r-2 border-gray-300 mb-2 p-2'}>
             <fieldset className={''}>
               <div className={'font-bold '}>Thời gian:</div>
-              <select className={'p-2 rounded-lg'}>
-                <option>Hôm nay</option>
-                <option>Tuần này</option>
-                <option>Tháng này</option>
-                <option>Năm nay</option>
-                <option>Năm nay</option>
+              <select className={'p-2 rounded-lg'} onChange={(e) => {
+                e.target.form.requestSubmit();
+              }}>
+                <option value={'today'}>Hôm nay</option>
+                <option value={'tweek'}>Tuần này</option>
+                <option value={'tmonth'}>Tháng này</option>
+                <option value={'tyear'}>Năm nay</option>
               </select>
               <input type={'submit'} hidden />
             </fieldset>
           </form>
           <div className={'grid grid-cols-2 grid-rows-2 gap-4 w-full p-2'}>
-            <div>Tiền mặt: <strong>10000000</strong></div>
+            <div>Tiền mặt: <strong>{formattedNumber(10000000)}</strong></div>
             <div>Chuyển khoản: <strong>10000000</strong></div>
             <div>Tổng doanh thu: <strong>20000000</strong></div>
           </div>
@@ -69,7 +75,7 @@ const FinanceManagerPage = () => {
                      labelDataset={'nghìn đồng'}
                      labelsChart={['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN']}
                      dataChart={[3400, 1500, 2550, 3040, 5760, 3500, 4120]}
-          stepSize={500}/>
+                     stepSize={500} />
 
         </div>
         <div
@@ -79,7 +85,7 @@ const FinanceManagerPage = () => {
                      labelDataset={'đv: triệu đồng'}
                      labelsChart={['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12']}
                      dataChart={[90, 100, 150, 102, 98, 97.6, 105.3, 120, 100, 150.3, 99.2, 161]}
-          stepSize={50}/>
+                     stepSize={50} />
         </div>
       </div>
 

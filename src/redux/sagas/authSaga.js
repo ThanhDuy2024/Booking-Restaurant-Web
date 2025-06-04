@@ -18,12 +18,13 @@ function* handleLogin(action) {
       password: action.payload.password,
     });
 
-    yield delay(2000);
+    yield delay(3000);
     const user = yield call(getMe);
     yield delay(1000);
 
     yield put(loginSuccess(user));
-    showToast(message || 'Đăng nhập thành công');
+    const message = 'Đăng nhập thành công';
+    showToast(message);
   } catch (error) {
     console.log('❌ Login error:', error);
     yield delay(2000);

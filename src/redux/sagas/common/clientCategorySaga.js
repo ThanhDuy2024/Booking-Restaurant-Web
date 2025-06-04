@@ -9,12 +9,12 @@ function* handleFetchCategory() {
     yield put(getCategoryRequest());
     const {search, page} = yield select(state => state.client_category.query);
 
-    const data = yield call(getCategory, search , page);
-    const {categoryList, pages} = data;
+    const response = yield call(getCategory, search , page);
+    const {data, pages} = response;
 
-    yield put(getCategorySuccess({category: categoryList, pages}));
+    yield put(getCategorySuccess({category: data, pages}));
   } catch (error) {
-    const message = error.response?.data?.message || 'lấy dữ liệu thất bại';
+    const message = error.response?.data?.message || 'Lấy dữ liệu thất bại';
     yield put(getCategoryFailed(message));
     showToast(message, {type: 'error'});
   }

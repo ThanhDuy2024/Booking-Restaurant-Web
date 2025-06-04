@@ -7,11 +7,7 @@ import theme from '@/lib/theme';
 import '@/styles/tailwind.css';
 import '@/styles/globals.css';
 import '@/styles/variable.css';
-import { useDispatch } from 'react-redux';
-import { checkAuthRequest } from '@/redux/slices/authSlice';
-import { useEffect } from 'react';
-import ClientLayoutRedirect from '@/components/common/ClientLayout';
-import AuthCheck from '@/components/common/AuthCheck';
+
 
 export default function RootLayout({ children }) {
 
@@ -21,8 +17,6 @@ export default function RootLayout({ children }) {
     <ThemeProvider theme={theme}>
       <ReduxProvider>
         <ToastProvider>
-          {/*<AuthCheck />*/}
-          {/*<ClientLayoutRedirect />*/}
           {children}
         </ToastProvider>
       </ReduxProvider>

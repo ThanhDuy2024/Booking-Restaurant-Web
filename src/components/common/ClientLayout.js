@@ -9,14 +9,14 @@ export default function ClientLayoutRedirect() {
   const pathname = usePathname();
   const router = useRouter();
 
-  console.log('🔍 [LayoutRedirect] user.role =', user?.role, '| pathname =', pathname);
+  // console.log('🔍 [LayoutRedirect] user.role =', user?.role, '| pathname =', pathname);
 
   useEffect(() => {
     if (!user) return;
     const publicPages = ['/', '/login'];
 
     if (!publicPages.includes(pathname)) return;
-    console.log('user Role = ' + user.role)
+    // console.log('user Role = ' + user.role)
 
     if (user.role === 'admin' && pathname !== '/manager') {
       router.push('/manager');

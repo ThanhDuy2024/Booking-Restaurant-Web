@@ -9,3 +9,12 @@ export const getCategory = async (search, page) => {
     throw error;
   }
 }
+
+export const getFood = async (search, page, categoryId) => {
+  try {
+    const response = await apiClient.get(endPoints.common.getFood(search, page, categoryId));
+    return response.data
+  } catch (error) {
+    throw error;
+  }
+}

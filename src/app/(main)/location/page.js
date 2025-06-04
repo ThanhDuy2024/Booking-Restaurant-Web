@@ -6,7 +6,7 @@ export default function LocationPage() {
       {/* Banner */}
       <section className="relative">
         <img
-          src="/fonts/images/banner2.jpg"
+          src="/images/banner2.jpg"
           alt="Banner"
           className="w-full h-[500px] object-cover"
         />
@@ -31,7 +31,7 @@ export default function LocationPage() {
             {/* Branch 1 */}
             <div className="bg-white shadow-md rounded-2xl overflow-hidden">
               <img
-                src="/fonts/images/branch1.jpg"
+                src="/images/branch1.jpg"
                 alt="Chi nhánh 1"
                 className="w-full h-52 object-cover"
               />
@@ -47,7 +47,7 @@ export default function LocationPage() {
             {/* Branch 2 */}
             <div className="bg-white shadow-md rounded-2xl overflow-hidden">
               <img
-                src="/fonts/images/branch2.jpg"
+                src="/images/branch2.jpg"
                 alt="Chi nhánh 2"
                 className="w-full h-52 object-cover"
               />
@@ -63,7 +63,7 @@ export default function LocationPage() {
             {/* Branch 3 */}
             <div className="bg-white shadow-md rounded-2xl overflow-hidden">
               <img
-                src="/fonts/images/branch3.jpg"
+                src="/images/branch3.jpg"
                 alt="Chi nhánh 3"
                 className="w-full h-52 object-cover"
               />

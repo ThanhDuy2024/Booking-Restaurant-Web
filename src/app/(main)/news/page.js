@@ -5,7 +5,7 @@ export default function NewsPage() {
       {/* Banner */}
       <section className="relative">
         <img
-          src="/fonts/images/banner3.jpg"
+          src="/images/banner3.jpg"
           alt="Banner"
           className="w-full h-[500px] object-cover"
         />

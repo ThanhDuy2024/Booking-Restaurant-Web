@@ -17,7 +17,7 @@ export default function MenuPage() {
     {
       id: 1,
       name: 'Phở Bò Truyền Thống',
-      image: '/fonts/images/product.jpg',
+      image: '/images/product.jpg',
       position: 1,
       status: 'active',
       price: 120,
@@ -27,7 +27,7 @@ export default function MenuPage() {
     {
       id: 2,
       name: 'Gỏi Cuốn Tôm Thịt',
-      image: '/fonts/images/product.jpg',
+      image: '/images/product.jpg',
       position: 2,
       status: 'unactive',
       price: 60,
@@ -37,7 +37,7 @@ export default function MenuPage() {
     {
       id: 3,
       name: 'Chè Dừa Non',
-      image: '/fonts/images/product.jpg',
+      image: '/images/product.jpg',
       position: 3,
       status: 'active',
       price: 45,
@@ -47,7 +47,7 @@ export default function MenuPage() {
     {
       id: 4,
       name: 'Chè Dừa Non',
-      image: '/fonts/images/product.jpg',
+      image: '/images/product.jpg',
       position: 4,
       status: 'active',
       price: 45,
@@ -57,7 +57,7 @@ export default function MenuPage() {
     {
       id: 5,
       name: 'Chè Dừa Non',
-      image: '/fonts/images/product.jpg',
+      image: '/images/product.jpg',
       position: 5,
       status: 'active',
       price: 45,
@@ -93,7 +93,7 @@ export default function MenuPage() {
   return (
     <main>
       <section className="relative">
-        <img src="/fonts/images/img_product_list_banner.webp" alt="Banner" />
+        <img src="/images/img_product_list_banner.webp" alt="Banner" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
           <h2 className="text-4xl font-semibold text-white">Menu</h2>
         </div>
@@ -180,8 +180,8 @@ export default function MenuPage() {
                             className="w-5 h-5 inline-block"
                             src={
                               star <= item.stars
-                                ? '/fonts/images/ico_star_active.png'
-                                : '/fonts/images/ico_star_gray.png'
+                                ? '/images/ico_star_active.png'
+                                : '/images/ico_star_gray.png'
                             }
                             alt="Star Rating"
                           />
@@ -240,7 +240,7 @@ export default function MenuPage() {
                     >
                       <img
                         className="w-4 h-4"
-                        src="/fonts/images/ico_chevron_left.png"
+                        src="/images/ico_chevron_left.png"
                         alt="Previous"
                       />
                     </button>
@@ -269,7 +269,7 @@ export default function MenuPage() {
                     >
                       <img
                         className="w-4 h-4"
-                        src="/fonts/images/ico_chevron_right.png"
+                        src="/images/ico_chevron_right.png"
                         alt="Next"
                       />
                     </button>

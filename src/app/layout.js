@@ -7,6 +7,7 @@ import theme from '@/lib/theme';
 import '@/styles/tailwind.css';
 import '@/styles/globals.css';
 import '@/styles/variable.css';
+import ModalRender from '@/components/ModalRender';
 
 
 export default function RootLayout({ children }) {
@@ -17,6 +18,7 @@ export default function RootLayout({ children }) {
     <ThemeProvider theme={theme}>
       <ReduxProvider>
         <ToastProvider>
+          <ModalRender />
           {children}
         </ToastProvider>
       </ReduxProvider>

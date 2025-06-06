@@ -2,9 +2,12 @@ import React from 'react';
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
+import { openModal } from '@/redux/slices/modalSlice';
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter();
+  const dispatch = useDispatch();
   return (
     <header className="py-5 md:py-8 sticky top-0 z-40 bg-yellow-400 shadow-2xl">
       <div className="max-w[1480px] w-full px-5 mx-auto py-0 ">
@@ -67,12 +70,12 @@ export default function Header() {
               </li>
               <hr />
               <li>
-                <Link
-                  href="/booking"
+                <button
+                  onClick={() => dispatch(openModal({type: 'booking'}))}
                   className="relative bg-black text-white rounded-full w-[120px] py-2 px-4 overflow-hidden transition duration-300 ease-in-out hover:bg-white hover:text-black  shadow-md hover:shadow-lg"
                 >
                   Đặt Bàn
-                </Link>
+                </button>
               </li>
             </ul>
           </nav>

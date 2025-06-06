@@ -3,7 +3,9 @@
 //Trang Home
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { openModal } from '@/redux/slices/modalSlice';
 
 export default function HomePages() {
   const menuItems = [
@@ -60,13 +62,18 @@ export default function HomePages() {
   ];
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
-
   const sortedItems = menuItems.sort((a, b) => a.position - b.position);
   const totalPages = Math.ceil(sortedItems.length / itemsPerPage);
   const currentItems = sortedItems.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({type: 'client_branch/fetchBranch'})
+  }, [dispatch]);
+
   return (
     <main>
       <section className="relative text-center">
@@ -82,6 +89,7 @@ export default function HomePages() {
           </h2>
           <button
             style={{ animationDelay: '0.3s' }}
+            onClick={() => dispatch(openModal({type: 'booking'}))}
             className="bg-black animate-slideInLeft mt-4 lg:mt-8 h-11 border border-white px-7 inline-flex items-center font-semibold text-white rounded-full text-[15px] hover:bg-white hover:text-black transition-all duration-300"
           >
             Đặt Bàn Ngay
@@ -262,7 +270,9 @@ export default function HomePages() {
                 Trải Nghiệm Ẩm Thực Tuyệt Vời
               </h2>
               <div className="flex justify-center">
-                <button className=" bg-white h-9 border border-black px-7 inline-flex items-center font-semibold text-black rounded-full text-[15px] hover:bg-black hover:text-white transition-all duration-300">
+                <button
+                  onClick={() => dispatch(openModal({type: 'booking'}))}
+                  className=" bg-white h-9 border border-black px-7 inline-flex items-center font-semibold text-black rounded-full text-[15px] hover:bg-black hover:text-white transition-all duration-300">
                   Đặt Bàn Ngay
                 </button>
               </div>

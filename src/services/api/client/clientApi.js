@@ -18,3 +18,21 @@ export const getFood = async (search, page, categoryId) => {
     throw error;
   }
 }
+
+export const getBranch = async () => {
+  try {
+    const response = await apiClient.get(endPoints.common.getBranch);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export const booking = async (formData) => {
+  try {
+    const response = await apiClient.post(endPoints.common.booking, formData);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}

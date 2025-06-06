@@ -50,7 +50,9 @@ const endPoints = {
     }),
     getFood: (search, page, categoryId) => buildUrlWithParams(`/api/client/food/list`, {
       search, page, categoryId,
-    })
+    }),
+    getBranch: `/api/client/branch/list`,
+    booking: `/api/client/booking/create`
   },
 };
 

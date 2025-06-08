@@ -85,7 +85,7 @@ export default function Header() {
             onClick={() => setIsMobileMenuOpen(true)}
           >
             <img
-              src="/fonts/icons/nav menu.png"
+              src="/icons/common/nav menu.png"
               alt="Menu"
               className="w-6 h-6"
             />

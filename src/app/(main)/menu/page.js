@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuery } from '@/redux/slices/common/foodSlice';
 import Pagination from '@/components/common/Pagination';
+import SearchBar from '@/components/common/SearchBar';
 
 export default function MenuPage() {
   const categories = ['Phở', 'Gỏi Cuốn', 'Chè', 'Bánh', 'Cơm'];
@@ -17,12 +18,14 @@ export default function MenuPage() {
     // ... thêm món ăn khác
   ];
   const dispatch = useDispatch();
-  const {category} = useSelector(state => state.client_category);
-  const {foods, loading, error, pagination, query} = useSelector(state=> state.client_food);
+  const { category } = useSelector((state) => state.client_category);
+  const { foods, loading, error, pagination, query } = useSelector(
+    (state) => state.client_food
+  );
   useEffect(() => {
-    dispatch({type: 'client_category/fetchCategory'});
-    dispatch({type: 'client_food/fetchFood'});
-  },[query ,dispatch]);
+    dispatch({ type: 'client_category/fetchCategory' });
+    dispatch({ type: 'client_food/fetchFood' });
+  }, [query, dispatch]);
 
   const [selectedCategories, setSelectedCategories] = useState([]);
 
@@ -34,10 +37,12 @@ export default function MenuPage() {
     );
   };
 
-  const filteredMenuItems1 =
-    selectedCategories.length === 0
-      ? menuItems1
-      : menuItems1.filter((item) => selectedCategories.includes(item.category));
+  const handleSearch = (keyword) => {
+    dispatch(updateQuery({ search: keyword }));
+  };
+  const filteredMenuItems1 = menuItems1.filter((item) =>
+    selectedCategories.includes(item.category)
+  );
 
   return (
     <main>
@@ -53,7 +58,8 @@ export default function MenuPage() {
           <div className="lg:grid grid-cols-5 gap-6">
             {/* Danh mục */}
             <div className="col-span-1 p-4 border rounded-md shadow-sm">
-              <h2 className="text-lg font-semibold mb-4">Danh Mục Món Ăn</h2>
+              <SearchBar onSearch={handleSearch} />
+              <h2 className="text-lg font-semibold mt-4">Danh Mục Món Ăn</h2>
               <ul className="space-y-3">
                 {category.map((item) => (
                   <li

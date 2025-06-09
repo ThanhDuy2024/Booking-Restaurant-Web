@@ -27,6 +27,7 @@ export const createBranch = async (createForm) => {
 export const editBranch = async (id, editForm) => {
   try {
     const response = await apiClient.patch(endPoints.admin.editBranch(id), editForm);
+    console.log(response);
     return response.data;
   } catch (error) {
     console.error('Edit Branch failed:', error);

@@ -36,6 +36,7 @@ export const store = configureStore({
           'admin_category/updateCategory',
           'admin_branch/createBranch',
           'admin_branch/updateBranch',
+          'admin_branch/updateBranchRequest',
           'admin_food/createFood',
           'admin_food/updateFood',
           'admin_staff/createStaff',

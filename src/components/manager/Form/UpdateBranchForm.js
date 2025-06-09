@@ -32,7 +32,12 @@ export default function BranchUpdateForm({ open, onClose, item }) {
 
     if (formData.avatar) data.append('avatar', formData.avatar);
 
-    dispatch({ type: 'admin_branch/updateBranchRequest', payload: data });
+    dispatch({
+      type: 'admin_branch/updateBranch', payload: {
+        id: item._id,
+        update: data,
+      },
+    });
     onClose(false);
   };
   const handleFileChange = (e) => {
@@ -48,7 +53,7 @@ export default function BranchUpdateForm({ open, onClose, item }) {
     <ReusableModal
       open={open}
       onClose={onClose}
-      title="Tạo chi nhánh"
+      title="Chỉnh sửa chi nhánh"
       description="Điền thông tin chi nhánh bên dưới"
       footer={<AppButton variant="contained"
                          color="primary"

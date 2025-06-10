@@ -43,7 +43,15 @@ const endPoints = {
 
   },
 
-  staff: {},
+  staff: {
+    getBookingList: (search, page, phone) => buildUrlWithParams(`/api/admin/booking/list`,{
+      search, page, phone,
+    }),
+    getOrderList: (search, date, priceSort, page, status) => buildUrlWithParams(`/api/admin/order/list`, {
+      search, date, priceSort, page, status
+    }),
+    createOrder: `/api/admin/order/create`,
+  },
   common: {
     getCategory: (search, page) => buildUrlWithParams(`/api/client/category/list`, {
       search, page,
@@ -52,7 +60,7 @@ const endPoints = {
       search, page, categoryId,
     }),
     getBranch: `/api/client/branch/list`,
-    booking: `/api/client/booking/create`
+    booking: `/api/client/booking/create`,
   },
 };
 

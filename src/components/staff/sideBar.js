@@ -62,7 +62,8 @@ export default function Sidebar({ isOpen, setIsOpen }) {
             <li key={index}>
               <Link
                 href={item.href}
-                className="flex items-center gap-4 bg-white/90 text-black rounded-xl hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md"
+                className="flex items-center gap-4 bg-white/90 text-black rounded-xl
+                 hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md"
               >
                 <img
                   className="w-12 h-12 object-contain"

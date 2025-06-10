@@ -28,7 +28,7 @@ function* handleLogin(action) {
   } catch (error) {
     console.log('❌ Login error:', error);
     yield delay(2000);
-    const message = error.response?.data?.message || 'Đăng nhập thất bại';
+    const message = error|| 'Đăng nhập thất bại';
     yield put(loginFailed(message));
     showToast(message, { type: 'error' });
   }

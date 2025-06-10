@@ -17,20 +17,26 @@ import clientFoodSaga from '@/redux/sagas/common/clientFoodSaga';
 import modalSliceReducer from './slices/modalSlice';
 import clientBranchReducer from './slices/common/branchSlice';
 import clientBranchSaga from './sagas/common/clientBranchSaga';
+import staffOrderReducer from './slices/staff/orderSlice';
+import staffBookingReducer from './slices/staff/bookingSlice';
+import staffOrderSaga from '@/redux/sagas/staff/orderSaga';
+import staffBookingSaga from '@/redux/sagas/staff/bookingSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   reducer: {
+    modal: modalSliceReducer,
     auth: authReducer,
     admin_category: categoryReducer,
     admin_food: foodReducer,
     admin_staff: staffReducer,
     admin_branch: branchReducer,
     client_category: clientCategoryReducer,
-    client_food: clientFoodReducer,
-    modal: modalSliceReducer,
     client_branch: clientBranchReducer,
+    client_food: clientFoodReducer,
+    staff_order: staffOrderReducer,
+    staff_booking: staffBookingReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -60,3 +66,5 @@ sagaMiddleware.run(branchSaga);
 sagaMiddleware.run(clientCategorySaga);
 sagaMiddleware.run(clientFoodSaga);
 sagaMiddleware.run(clientBranchSaga);
+sagaMiddleware.run(staffOrderSaga);
+sagaMiddleware.run(staffBookingSaga);

@@ -68,7 +68,7 @@ export default function MenuPage() {
                   >
                     <input
                       type="checkbox"
-                      id={item._id}
+                      id={item.id}
                       checked={selectedCategories.includes(name)}
                       onChange={() => handleCheckboxChange(name)}
                     />
@@ -142,7 +142,7 @@ export default function MenuPage() {
                       <div className="mt-2  relative h-5 overflow-hidden">
                         <div className="absolute flex items-center flex-col left-1/2 -translate-x-1/2 hover:bottom-0 -bottom-5 transition-all duration-300">
                           <div className="flex items-center justify-center font-bold text-15 text-center">
-                            {item.priceFormat}
+                            {item.priceFormat}VND
                           </div>
                           {item.status === 'active' && (
                             <a

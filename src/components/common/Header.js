@@ -136,7 +136,7 @@ export default function Header() {
                   </li>
                 </ul>
                 <button
-                  href="/booking"
+                  onClick={() => dispatch(openModal({ name: 'booking' }))}
                   className="w-full bg-yellow-400 hover:bg-white text-black font-semibold py-2  transition border-2 border-collapse"
                 >
                   Đặt Bàn

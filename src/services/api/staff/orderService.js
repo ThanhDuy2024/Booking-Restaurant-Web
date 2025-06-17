@@ -8,7 +8,7 @@ export const fetchOrderList = async (search, page, date, priceSort, status) => {
   } catch (error) {
     throw error;
   }
-}
+};
 
 export const createOrder = async (formData) => {
   try {
@@ -17,4 +17,22 @@ export const createOrder = async (formData) => {
   } catch (error) {
     throw error;
   }
-}
+};
+
+export const updateOrder = async (id, formData) => {
+  try {
+    const response = await apiClient.patch(endPoints.staff.updateOrder(id), formData);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export const deleteOrder = async (id) => {
+  try {
+    const response = await apiClient.delete(endPoints.staff.deleteOrder(id));
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

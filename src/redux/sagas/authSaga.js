@@ -41,6 +41,7 @@ function* handleLogout() {
     yield delay(1000);
     yield put(logoutSuccess());
     showToast(message || 'Đăng xuất thành công');
+    yield put(checkAuthRequest());
   } catch (error) {
     yield put(logoutFailed('Đăng xuất thất bại!'));
     showToast('Đăng xuất thất bại', { type: 'error' });

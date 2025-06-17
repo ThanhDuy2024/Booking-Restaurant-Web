@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { openModal } from '@/redux/slices/modalSlice';
+
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter();
@@ -54,7 +55,7 @@ export default function Header() {
               </li>
               <li>
                 <Link
-                  href="location"
+                  href="/location"
                   className="relative after:absolute after:h-[1.5px] after:bg-black after:left-0 after:bottom-[-2px] hover:after:scale-x-100 after:scale-x-0 after:w-full after:transition-all after:duration-300"
                 >
                   Chi Nhánh
@@ -62,7 +63,7 @@ export default function Header() {
               </li>
               <li>
                 <Link
-                  href="news"
+                  href="/contact"
                   className="relative after:absolute after:h-[1.5px] after:bg-black after:left-0 after:bottom-[-2px] hover:after:scale-x-100 after:scale-x-0 after:w-full after:transition-all after:duration-300"
                 >
                   Liên Hệ
@@ -71,7 +72,7 @@ export default function Header() {
               <hr />
               <li>
                 <button
-                  onClick={() => dispatch(openModal({type: 'booking'}))}
+                  onClick={() => dispatch(openModal({name: 'booking'}))}
                   className="relative bg-black text-white rounded-full w-[120px] py-2 px-4 overflow-hidden transition duration-300 ease-in-out hover:bg-white hover:text-black  shadow-md hover:shadow-lg"
                 >
                   Đặt Bàn

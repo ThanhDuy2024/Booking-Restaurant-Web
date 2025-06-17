@@ -7,7 +7,7 @@ import {
 } from '@/redux/slices/manager/categorySlice';
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { showToast } from '@/lib/utils';
-import { createCategory, fetchCategory } from '@/services/api/manager/categoryService';
+import { createCategory, deleteCategory, editCategory, fetchCategory } from '@/services/api/manager/categoryService';
 
 
 function* handleFetchCategory() {

@@ -9,11 +9,11 @@ export function* handleFetchBookingList() {
     yield put(getBookingListRequest());
 
     const {search, page, phone} = yield select(state=> state.staff_booking.query);
-    const data = yield call(fetchBookingList, search, page, phone);
+    const response = yield call(fetchBookingList, search, page, phone);
 
-    const {bookingList, pages} = data;
+    const {data, pages} = response;
 
-    yield put(getBookingListSuccess({booking: bookingList, pages }));
+    yield put(getBookingListSuccess({bookingList: data, pages }));
   } catch (error){
     const message = error || 'Lấy dữ liệu thất bại';
     yield put(getBookingListFailed(message));

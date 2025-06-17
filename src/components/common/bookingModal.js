@@ -42,6 +42,7 @@ export default function BookingModal() {
       onClose={() => dispatch(closeModal('booking'))}
       title="Đặt bàn"
       description="Vui lòng điền thông tin bên dưới để đặt bàn"
+      contentClassName ="w-5xl"
       footer={
         <AppButton
           variant="contained"
@@ -53,8 +54,7 @@ export default function BookingModal() {
         </AppButton>
       }
     >
-      <form id="booking-form" onSubmit={handleSubmit} className="space-y-4">
-
+      <form id="booking-form" onSubmit={handleSubmit} className="space-y-4 px-1">
         <div>
           <label className={`block test-sm font-text mb-1`}>Chọn địa điểm</label>
           <select

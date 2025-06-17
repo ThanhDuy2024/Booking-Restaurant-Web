@@ -44,13 +44,15 @@ const endPoints = {
   },
 
   staff: {
-    getBookingList: (search, page, phone) => buildUrlWithParams(`/api/admin/booking/list`,{
+    getBookingList: (search, page, phone) => buildUrlWithParams(`/api/admin/booking/list`, {
       search, page, phone,
     }),
-    getOrderList: (search, date, priceSort, page, status) => buildUrlWithParams(`/api/admin/order/list`, {
-      search, date, priceSort, page, status
+    getOrderList: (search, page, date, priceSort, status) => buildUrlWithParams(`/api/admin/order/list`, {
+      search, page, date, priceSort, status,
     }),
     createOrder: `/api/admin/order/create`,
+    updateOrder: (id) => `/api/admin/order/edit/${id}`,
+    deleteOrder: (id) => `/api/admin/order/delete/${id}`,
   },
   common: {
     getCategory: (search, page) => buildUrlWithParams(`/api/client/category/list`, {

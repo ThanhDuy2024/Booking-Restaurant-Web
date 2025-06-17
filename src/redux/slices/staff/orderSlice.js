@@ -55,6 +55,39 @@ const staffOrderSlice = createSlice({
       state.error = action.payload;
     },
 
+    // ========== UPDATE ==========
+    updateOrderRequest(state) {
+      state.loading = true;
+      state.error = null;
+    },
+
+    updateOrderSuccess(state, action) {
+      state.loading = false;
+      state.orderList = state.orderList.filter(order => order._id != action.payload.id);
+      state.error = null;
+    },
+
+    updateOrderFailed(state, action) {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
+    // ========== DELETE ==========
+    deleteOrderRequest(state) {
+      state.loading = true;
+      state.error = null;
+    },
+
+    deleteOrderSuccess(state, action) {
+      state.loading = false;
+      state.error = null;
+    },
+
+    deleteOrderFailed(state ,action) {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
     // ========== UPDATE QUERY ==========
     updateQuery(state, action) {
       state.query = {
@@ -73,6 +106,14 @@ export const {
   createOrderRequest,
   createOrderSuccess,
   createOrderFailed,
+
+  updateOrderRequest,
+  updateOrderSuccess,
+  updateOrderFailed,
+
+  deleteOrderRequest,
+  deleteOrderSuccess,
+  deleteOrderFailed,
 
   updateQuery,
 } = staffOrderSlice.actions;

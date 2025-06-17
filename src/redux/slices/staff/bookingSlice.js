@@ -27,7 +27,7 @@ const staffBookingSlice = createSlice({
     getBookingListSuccess(state, action) {
       state.loading = false;
       state.error = null;
-      state.booking = action.payload.bookingList;
+      state.bookingList = action.payload.bookingList;
       state.pagination.pages = action.payload.pages;
     },
 

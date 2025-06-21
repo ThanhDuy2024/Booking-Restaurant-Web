@@ -28,7 +28,7 @@ function* handleLogin(action) {
   } catch (error) {
     console.log('❌ Login error:', error);
     yield delay(2000);
-    const message = error.response?.data?.message || 'Đăng nhập thất bại';
+    const message = error|| 'Đăng nhập thất bại';
     yield put(loginFailed(message));
     showToast(message, { type: 'error' });
   }
@@ -41,6 +41,7 @@ function* handleLogout() {
     yield delay(1000);
     yield put(logoutSuccess());
     showToast(message || 'Đăng xuất thành công');
+    yield put(checkAuthRequest());
   } catch (error) {
     yield put(logoutFailed('Đăng xuất thất bại!'));
     showToast('Đăng xuất thất bại', { type: 'error' });

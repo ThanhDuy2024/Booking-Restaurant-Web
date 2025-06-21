@@ -8,6 +8,7 @@ import {
   DialogDescription,
   DialogFooter,
 } from '@/components/ui/dialog';
+import { cn } from '@/lib/utils';
 
 export default function ReusableModal({
                                         open,
@@ -16,10 +17,18 @@ export default function ReusableModal({
                                         description,
                                         children,
                                         footer,
+                                        contentClassName = '',
                                       }) {
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-lg">
+      <DialogContent
+        className={cn(
+          "w-full p-6",
+          contentClassName && contentClassName.trim().length > 0
+            ? contentClassName
+            : "!max-w-6xl !w-[90vw]"
+        )}
+      >
         <DialogHeader>
           <div className="flex items-center justify-between">
             <div>

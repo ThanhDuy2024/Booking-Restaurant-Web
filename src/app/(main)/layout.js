@@ -7,7 +7,7 @@ import '../../styles/tailwind.css';
 import HomePages from './page';
 import MenuPage from './menu/page';
 import LocationPage from './location/page';
-import NewsPage from './news/page';
+import NewsPage from '@/app/(main)/contact/page';
 import '@/styles/tailwind.css';
 
 export default function MainLayout({ children }) {

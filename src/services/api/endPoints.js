@@ -48,7 +48,17 @@ const endPoints = {
     getProfile:  `/api/admin/profile/me`
   },
 
-  staff: {},
+  staff: {
+    getBookingList: (search, page, phone) => buildUrlWithParams(`/api/admin/booking/list`, {
+      search, page, phone,
+    }),
+    getOrderList: (search, page, date, priceSort, status) => buildUrlWithParams(`/api/admin/order/list`, {
+      search, page, date, priceSort, status,
+    }),
+    createOrder: `/api/admin/order/create`,
+    updateOrder: (id) => `/api/admin/order/edit/${id}`,
+    deleteOrder: (id) => `/api/admin/order/delete/${id}`,
+  },
   common: {
     getCategory: (search, page) => buildUrlWithParams(`/api/client/category/list`, {
       search, page,
@@ -57,7 +67,7 @@ const endPoints = {
       search, page, categoryId,
     }),
     getBranch: `/api/client/branch/list`,
-    booking: `/api/client/booking/create`
+    booking: `/api/client/booking/create`,
   },
 };
 

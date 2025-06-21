@@ -14,7 +14,7 @@ function* handleFetchFoods() {
 
     yield put(getFoodSuccess({foods: data , pages}));
   } catch (error) {
-    const message = error.response?.message || 'Lấy dữ liệu thất bại';
+    const message = error || 'Lấy dữ liệu thất bại';
     yield put(getFoodFailed(message));
     showToast(message, {type: 'error'});
   }

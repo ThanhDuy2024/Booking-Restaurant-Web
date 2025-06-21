@@ -6,17 +6,6 @@ import Pagination from '@/components/common/Pagination';
 import SearchBar from '@/components/common/SearchBar';
 
 export default function MenuPage() {
-  const categories = ['Phở', 'Gỏi Cuốn', 'Chè', 'Bánh', 'Cơm'];
-
-  const menuItems1 = [
-    { id: 1, name: 'Phở Bò', category: 'Phở' },
-    { id: 2, name: 'Phở Gà', category: 'Phở' },
-    { id: 3, name: 'Gỏi Cuốn Tôm Thịt', category: 'Gỏi Cuốn' },
-    { id: 4, name: 'Chè Dừa Non', category: 'Chè' },
-    { id: 5, name: 'Bánh Mì', category: 'Bánh' },
-    { id: 6, name: 'Cơm Tấm', category: 'Cơm' },
-    // ... thêm món ăn khác
-  ];
   const dispatch = useDispatch();
   const { category } = useSelector((state) => state.client_category);
   const { foods, loading, error, pagination, query } = useSelector(
@@ -26,23 +15,9 @@ export default function MenuPage() {
     dispatch({ type: 'client_category/fetchCategory' });
     dispatch({ type: 'client_food/fetchFood' });
   }, [query, dispatch]);
-
-  const [selectedCategories, setSelectedCategories] = useState([]);
-
-  const handleCheckboxChange = (categoryName) => {
-    setSelectedCategories((prev) =>
-      prev.includes(categoryName)
-        ? prev.filter((c) => c !== categoryName)
-        : [...prev, categoryName]
-    );
-  };
-
   const handleSearch = (keyword) => {
     dispatch(updateQuery({ search: keyword }));
   };
-  const filteredMenuItems1 = menuItems1.filter((item) =>
-    selectedCategories.includes(item.category)
-  );
 
   return (
     <main>
@@ -69,8 +44,8 @@ export default function MenuPage() {
                     <input
                       type="checkbox"
                       id={item._id}
-                      checked={selectedCategories.includes(name)}
-                      onChange={() => handleCheckboxChange(name)}
+                      // checked={}
+                      // onChange={()}
                     />
                     <label
                       htmlFor={item.name}
@@ -80,21 +55,6 @@ export default function MenuPage() {
                     </label>
                   </li>
                 ))}
-                <h2 className="text-lg font-semibold mb-4">Danh Sách Món Ăn</h2>
-                {filteredMenuItems1.length === 0 ? (
-                  <p>Không tìm thấy món ăn phù hợp.</p>
-                ) : (
-                  <ul className="space-y-3">
-                    {filteredMenuItems1.map((item) => (
-                      <li
-                        key={item.id}
-                        className="font-medium text-black text-sm"
-                      >
-                        {item.name} ({item.category})
-                      </li>
-                    ))}
-                  </ul>
-                )}
               </ul>
             </div>
             {/* Món ăn */}
@@ -121,28 +81,13 @@ export default function MenuPage() {
                           alt={item.name}
                         />
                       </div>
-
-                      <div className="flex justify-center items-center gap-1 mt-5">
-                        {[1, 2, 3, 4, 5].map((star) => (
-                          <img
-                            key={star}
-                            className="w-5 h-5 inline-block"
-                            src={
-                              star <= item.stars
-                                ? '/images/ico_star_active.png'
-                                : '/images/ico_star_gray.png'
-                            }
-                            alt="Star Rating"
-                          />
-                        ))}
-                      </div>
                       <h3 className="text-15 mt-2 font-semibold">
                         {item.name}
                       </h3>
                       <div className="mt-2  relative h-5 overflow-hidden">
                         <div className="absolute flex items-center flex-col left-1/2 -translate-x-1/2 hover:bottom-0 -bottom-5 transition-all duration-300">
                           <div className="flex items-center justify-center font-bold text-15 text-center">
-                            {item.priceFormat}
+                            {item.priceFormat} ₫
                           </div>
                           {item.status === 'active' && (
                             <a

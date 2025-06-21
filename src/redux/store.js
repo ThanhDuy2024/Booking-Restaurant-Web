@@ -1,6 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
+
+//Reducer
 import authReducer from './slices/authSlice';
+
 import authSaga from './sagas/authSaga';
 import categorySaga from './sagas/manager/categorySaga';
 import branchSaga from './sagas/manager/branchSaga';
@@ -10,20 +13,33 @@ import foodReducer from './slices/manager/foodSlice';
 import profileReducer from './slices/manager/profileSlice';
 import foodSaga from '@/redux/sagas/manager/foodSaga';
 import staffSaga from './sagas/manager/staffSaga';
+
 import staffReducer from './slices/manager/staffSlice';
 import branchReducer from './slices/manager/branchSlice';
 import clientCategoryReducer from './slices/common/categorySlice';
-import clientCategorySaga from '@/redux/sagas/common/clientCategorySaga';
 import clientFoodReducer from './slices/common/foodSlice';
-import clientFoodSaga from '@/redux/sagas/common/clientFoodSaga';
 import modalSliceReducer from './slices/modalSlice';
 import clientBranchReducer from './slices/common/branchSlice';
+import staffOrderReducer from './slices/staff/orderSlice';
+import staffBookingReducer from './slices/staff/bookingSlice';
+
+//Saga
+import authSaga from './sagas/authSaga';
+import categorySaga from './sagas/manager/categorySaga';
+import branchSaga from './sagas/manager/branchSaga';
+import foodSaga from '@/redux/sagas/manager/foodSaga';
+import staffSaga from './sagas/manager/staffSaga';
+import clientCategorySaga from '@/redux/sagas/common/clientCategorySaga';
+import clientFoodSaga from '@/redux/sagas/common/clientFoodSaga';
 import clientBranchSaga from './sagas/common/clientBranchSaga';
+import staffOrderSaga from '@/redux/sagas/staff/orderSaga';
+import staffBookingSaga from '@/redux/sagas/staff/bookingSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
 export const store = configureStore({
   reducer: {
+    modal: modalSliceReducer,
     auth: authReducer,
     admin_category: categoryReducer,
     admin_food: foodReducer,
@@ -31,9 +47,10 @@ export const store = configureStore({
     admin_branch: branchReducer,
     admin_profile: profileReducer,
     client_category: clientCategoryReducer,
-    client_food: clientFoodReducer,
-    modal: modalSliceReducer,
     client_branch: clientBranchReducer,
+    client_food: clientFoodReducer,
+    staff_order: staffOrderReducer,
+    staff_booking: staffBookingReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -54,6 +71,7 @@ export const store = configureStore({
         ignoredPaths: ['payload'],
       },
 
+
     }).concat(sagaMiddleware),
 });
 
@@ -65,3 +83,5 @@ sagaMiddleware.run(branchSaga);
 sagaMiddleware.run(clientCategorySaga);
 sagaMiddleware.run(clientFoodSaga);
 sagaMiddleware.run(clientBranchSaga);
+sagaMiddleware.run(staffOrderSaga);
+sagaMiddleware.run(staffBookingSaga);

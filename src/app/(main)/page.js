@@ -4,8 +4,9 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { openModal } from '@/redux/slices/modalSlice';
+import Link from 'next/link';
 
 export default function HomePages() {
   const menuItems = [
@@ -60,6 +61,7 @@ export default function HomePages() {
       stars: 3,
     },
   ];
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
   const sortedItems = menuItems.sort((a, b) => a.position - b.position);
@@ -70,8 +72,12 @@ export default function HomePages() {
   );
 
   const dispatch = useDispatch();
+  const {category} = useSelector(state => state.client_category);
+  const {foods} = useSelector(state => state.client_food);
   useEffect(() => {
-    dispatch({type: 'client_branch/fetchBranch'})
+    dispatch({type: 'client_branch/fetchBranch'});
+    dispatch({type: 'client_food/fetchFood'});
+    dispatch({type: 'client_category/fetchCategory'});
   }, [dispatch]);
 
   return (
@@ -89,7 +95,7 @@ export default function HomePages() {
           </h2>
           <button
             style={{ animationDelay: '0.3s' }}
-            onClick={() => dispatch(openModal({type: 'booking'}))}
+            onClick={() => dispatch(openModal({name: 'booking'}))}
             className="bg-black animate-slideInLeft mt-4 lg:mt-8 h-11 border border-white px-7 inline-flex items-center font-semibold text-white rounded-full text-[15px] hover:bg-white hover:text-black transition-all duration-300"
           >
             Đặt Bàn Ngay
@@ -124,53 +130,32 @@ export default function HomePages() {
         <div className="max-w-[1480px] w-full px-5 mx-auto py-0">
           <div className="flex flex-col-1 lg:items-center justify-between">
             <h2 className="text-xl font-bold lg:text-xl mt-4">Our Menu</h2>
-            <a
-              href="#"
+            <Link
+              href="/menu"
               className="mt-4 lg:mt-0 h-9 border border-black px-7 inline-flex items-center font-semibold text-black rounded-full text-[15px] hover:bg-black hover:text-white transition-all duration-300"
             >
               View All
-            </a>
+            </Link>
           </div>
 
           <ul className="mt-8 lg:grid grid-cols-4 gap-7 md:grid grid-rows-1 md:gap-10">
-            {currentItems.map((item) => (
+            {foods.map((item) => (
               <li
-                key={item.id}
+                key={item._id}
                 className="mt-6 md:mt-0 text-center group relative"
               >
                 <a>
-                  {item.status === 'unactive' && (
+                  {item.status === 'inactive' && (
                     <span className="absolute py-1 text-xs px-2 top-3 left-3 bg-red-500 text-white rounded-xl">
                       Out of stock
                     </span>
                   )}
-                  {item.discount > 0 && (
-                    <span className="absolute py-1 text-xs px-2 top-3 left-3 bg-green-500 text-white rounded-xl">
-                      -{item.discount}%
-                    </span>
-                  )}
-
                   <div className="rounded-xl overflow-hidden bg-white lg:h-[385px]">
                     <img
                       className="block size-full object-cover"
-                      src={item.image}
+                      src={item.avatar}
                       alt={item.name}
                     />
-                  </div>
-
-                  <div className="flex justify-center items-center gap-1 mt-5">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <img
-                        key={star}
-                        className="size-5 inline-block"
-                        src={
-                          star <= item.stars
-                            ? '/images/ico_star_active.png'
-                            : '/images/ico_star_gray.png'
-                        }
-                        alt="Star Rating"
-                      />
-                    ))}
                   </div>
                   <h3 className="text-15 mt-2 font-semibold">{item.name}</h3>
                 </a>
@@ -178,22 +163,7 @@ export default function HomePages() {
                 <div className="mt-2 relative h-5 overflow-hidden">
                   <div className="absolute flex items-center flex-col left-1/2 -translate-x-1/2 hover:bottom-0 -bottom-5 transition-all duration-300">
                     <div className="flex items-center justify-center font-bold text-15 text-center">
-                      {item.discount > 0 ? (
-                        <>
-                          <span className="line-through text-green-500 mr-2">
-                            ${item.price.toFixed(2)}
-                          </span>
-                          <span> - </span>
-                          <span>
-                            $
-                            {(item.price * (1 - item.discount / 100)).toFixed(
-                              2
-                            )}
-                          </span>
-                        </>
-                      ) : (
-                        <span>${item.price.toFixed(2)}</span>
-                      )}
+                      <span>{item.priceFormat} ₫</span>
                     </div>
                     {item.status === 'active' && (
                       <a
@@ -271,7 +241,7 @@ export default function HomePages() {
               </h2>
               <div className="flex justify-center">
                 <button
-                  onClick={() => dispatch(openModal({type: 'booking'}))}
+                  onClick={() => dispatch(openModal({name: 'booking'}))}
                   className=" bg-white h-9 border border-black px-7 inline-flex items-center font-semibold text-black rounded-full text-[15px] hover:bg-black hover:text-white transition-all duration-300">
                   Đặt Bàn Ngay
                 </button>

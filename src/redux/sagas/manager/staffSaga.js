@@ -24,7 +24,7 @@ function* handleFetchStaffAccount() {
     const { staffList, pages } = data;
     yield put(getStaffSuccess({ staffs: staffList, pages }));
   } catch (error) {
-    const message = error.response?.data?.message || 'Lấy dữ liệu thất bại';
+    const message = error || 'Lấy dữ liệu thất bại';
     yield put(getStaffFailed(message));
     showToast(message, { type: 'error' });
   }
@@ -39,7 +39,7 @@ function* handleCreateStaffAccount(action) {
 
     yield put({ type: 'admin_staff/fetchStaffAccount' });
   } catch (error) {
-    const message = error.response?.data?.message || 'Tạo danh mục thất bại';
+    const message = error || 'Tạo danh mục thất bại';
     yield put(createStaffFailed(message));
     showToast(message, { type: 'error' });
   }
@@ -57,7 +57,7 @@ function* handleUpdateStaffAccount(action) {
 
     yield put({ type: 'admin_staff/fetchStaff' });
   } catch (error) {
-    const message = error.response?.data?.message || 'Cập nhật dang mục thất bại';
+    const message = error || 'Cập nhật dang mục thất bại';
     yield put(updateStaffFailed(message));
     showToast(message, { type: 'error' });
   }
@@ -70,7 +70,7 @@ function* handleDeleteStaffAccount(action) {
     yield call(deleteStaffAccount, id);
     yield put(deleteStaffSuccess(action.payload));
   } catch (error) {
-    const message = error.response?.data?.message || 'Khóa danh mục thất bại';
+    const message = error || 'Khóa danh mục thất bại';
     yield put(deleteStaffFailed(message));
     showToast(message, { type: 'error' });
   }

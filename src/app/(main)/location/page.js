@@ -1,6 +1,12 @@
 'use client';
+
 import React from 'react';
+import { useSelector } from 'react-redux';
+
 export default function LocationPage() {
+
+  const { branches } = useSelector(state => state.client_branch);
+
   return (
     <main>
       {/* Banner */}
@@ -28,53 +34,22 @@ export default function LocationPage() {
           </h3>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {/* Branch 1 */}
-            <div className="bg-white shadow-md rounded-2xl overflow-hidden">
-              <img
-                src="/images/branch1.jpg"
-                alt="Chi nhánh 1"
-                className="w-full h-52 object-cover"
-              />
-              <div className="p-5">
-                <h4 className="text-xl font-semibold mb-2">Chi nhánh Quận 1</h4>
-                <p className="text-gray-600">
-                  123 Lê Lợi, Phường Bến Thành, Quận 1, TP.HCM
-                </p>
-                <p className="text-gray-600">Điện thoại: 0901 234 567</p>
+            {branches.map((item) => (
+              <div className="bg-white shadow-md rounded-2xl overflow-hidden" key={item._id}>
+                <img
+                  src={item.avatar}
+                  alt="error"
+                  className="w-full h-52 object-cover"
+                />
+                <div className="p-5">
+                  <h4 className="text-xl font-semibold mb-2">{item.name}</h4>
+                  <p className="text-gray-600">
+                    {item.address}
+                  </p>
+                  <p className="text-gray-600">Điện thoại: {item.phone}</p>
+                </div>
               </div>
-            </div>
-
-            {/* Branch 2 */}
-            <div className="bg-white shadow-md rounded-2xl overflow-hidden">
-              <img
-                src="/images/branch2.jpg"
-                alt="Chi nhánh 2"
-                className="w-full h-52 object-cover"
-              />
-              <div className="p-5">
-                <h4 className="text-xl font-semibold mb-2">Chi nhánh Quận 7</h4>
-                <p className="text-gray-600">
-                  456 Nguyễn Văn Linh, Quận 7, TP.HCM
-                </p>
-                <p className="text-gray-600">Điện thoại: 0902 345 678</p>
-              </div>
-            </div>
-
-            {/* Branch 3 */}
-            <div className="bg-white shadow-md rounded-2xl overflow-hidden">
-              <img
-                src="/images/branch3.jpg"
-                alt="Chi nhánh 3"
-                className="w-full h-52 object-cover"
-              />
-              <div className="p-5">
-                <h4 className="text-xl font-semibold mb-2">Chi nhánh Hà Nội</h4>
-                <p className="text-gray-600">
-                  789 Trần Duy Hưng, Cầu Giấy, Hà Nội
-                </p>
-                <p className="text-gray-600">Điện thoại: 0903 456 789</p>
-              </div>
-            </div>
+              ))}
           </div>
         </div>
       </section>

@@ -14,7 +14,7 @@ function* handleFetchCategory() {
 
     yield put(getCategorySuccess({category: data, pages}));
   } catch (error) {
-    const message = error.response?.data?.message || 'Lấy dữ liệu thất bại';
+    const message = error || 'Lấy dữ liệu thất bại';
     yield put(getCategoryFailed(message));
     showToast(message, {type: 'error'});
   }

@@ -3,6 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   modals:{
     booking: {isOpen: false, data : null},
+    createOrder: {isOpen: false, data: null},
+    updateOrder: {isOpen: false, data: null},
   },
 };
 
@@ -11,15 +13,16 @@ const ModalSlice = createSlice({
   initialState,
   reducers: {
     openModal: (state, action) => {
-      const {type, data} = action.payload;
-      state.modals[type] = {isOpen: true, data:data || null};
+      console.log('[MODAL] Open:', action.payload);
+      const {name, data} = action.payload;
+      state.modals[name] = {isOpen: true, data:data || null};
     },
 
     closeModal: (state, action) => {
-      const type = action.payload;
-      if(state.modals[type]) {
-        state.modals[type].isOpen = false;
-        state.modals[type].data = null;
+      const name = action.payload;
+      if(state.modals[name]) {
+        state.modals[name].isOpen = false;
+        state.modals[name].data = null;
       }
     }
   }

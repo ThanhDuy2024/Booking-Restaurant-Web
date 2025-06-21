@@ -41,4 +41,18 @@ export const urlToFile = async (url, filename = 'avatar.jpg', mimeType = 'image/
   const res = await fetch(url);
   const blob = await res.blob();
   return new File([blob], filename, { type: mimeType });
+
+};
+
+
+export function parseTimeAll(timeAllStr) {
+  const [time, date] = timeAllStr.split(' - ');
+  const [day, month, year] = date.split('/');
+  const isoDate = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+  return `${isoDate}T${time}:00`;
+}
+
+export const getTodayDateString = () => {
+  const today = new Date();
+  return today.toISOString().split('T')[0]; // ví dụ: "2025-06-11"
 };

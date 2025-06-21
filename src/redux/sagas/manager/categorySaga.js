@@ -7,7 +7,7 @@ import {
 } from '@/redux/slices/manager/categorySlice';
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 import { showToast } from '@/lib/utils';
-import { createCategory, fetchCategory } from '@/services/api/manager/categoryService';
+import { createCategory, deleteCategory, editCategory, fetchCategory } from '@/services/api/manager/categoryService';
 
 
 function* handleFetchCategory() {
@@ -20,7 +20,7 @@ function* handleFetchCategory() {
     const { categoryList, pages } = data;
     yield put(getCategorySuccess({ items: categoryList, pages }));
   } catch (error) {
-    const message = error.response?.data?.message || 'Lấy dữ liệu thất bại';
+    const message = error || 'Lấy dữ liệu thất bại';
     yield put(getCategoryFailed(message));
     showToast(message, { type: 'error' });
   }
@@ -35,7 +35,7 @@ function* handleCreateCategory(action) {
 
     yield put({ type: 'admin_category/fetchCategory' });
   } catch (error) {
-    const message = error.response?.data?.message || 'Tạo danh mục thất bại';
+    const message = error || 'Tạo danh mục thất bại';
     yield put(createCategoryFailed(message));
     showToast(message, { type: 'error' });
   }
@@ -53,7 +53,7 @@ function* handleUpdateCategory(action) {
 
     yield put({ type: 'admin_category/fetchCategory' });
   } catch (error) {
-    const message = error.response?.data?.message || 'Cập nhật dang mục thất bại';
+    const message = error || 'Cập nhật dang mục thất bại';
     yield put(updateCategoryFailed(message));
     showToast(message, { type: 'error' });
   }
@@ -65,7 +65,7 @@ function* handleDeleteCategory(action) {
     yield call(deleteCategory, action.payload);
     yield put(deleteCategorySuccess(action.payload));
   } catch (error) {
-    const message = error.response?.data?.message || 'Khóa danh mục thất bại';
+    const message = error || 'Khóa danh mục thất bại';
     yield put(deleteCategoryFailed(message));
     showToast(message, { type: 'error' });
   }

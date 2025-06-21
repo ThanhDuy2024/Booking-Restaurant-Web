@@ -1,4 +1,7 @@
+'use client'
+
 import React from 'react';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -10,19 +13,19 @@ export default function Footer() {
               <h3 className="font-bold text-lg mb-4">Về Nhà Hàng</h3>
               <ul className="space-y-2">
                 <li>
-                  <a href="#" className="hover:underline">
+                  <Link href="/contact" className="hover:underline">
                     Giới thiệu
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
+                  <Link href="/contact" className="hover:underline">
                     Liên hệ
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="#" className="hover:underline">
+                  <Link href="/location" className="hover:underline">
                     Địa chỉ
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

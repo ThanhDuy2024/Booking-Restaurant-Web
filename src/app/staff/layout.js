@@ -2,25 +2,31 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Sidebar from '@/components/staff/sideBar';
 import { Menu } from 'lucide-react';
+import { checkAuthRequest } from '@/redux/slices/authSlice';
 
 
 export default function StaffLayout({ children }) {
   const [isOpen, setIsOpen] = useState(false);
-  // const user = useSelector((state) => state.auth.user);
-  // const router = useRouter();
-  //
-  // useEffect(() => {
-  //   if (!user) {
-  //     router.push('/login');
-  //   } else if (user.role !== 'staff') {
-  //     router.push('/error');
-  //   }
-  // }, [user]);
-  //
-  // if (!user || user.role !== 'STAFF') return null;
+  const user = useSelector((state) => state.auth.user);
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(checkAuthRequest());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (!user) {
+      router.push('/login');
+    } else if (user.role !== 'staff') {
+      router.push('/error');
+    }
+  }, [user]);
+
+  if (!user || user.role !== 'staff') return null;
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -30,11 +36,7 @@ export default function StaffLayout({ children }) {
         </button>
         <h1 className="text-lg font-bold">ARENA OF VALOR</h1>
       </header>
-
-      {/* Sidebar (controlled by parent) */}
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
-
-      {/* Content */}
       <main className="p-6">{children}</main>
     </div>
   );

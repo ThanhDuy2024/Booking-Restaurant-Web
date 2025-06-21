@@ -209,7 +209,6 @@ const StaffDashboard = () => {
           <Line data={bookingData} options={chartOptions('')} />
         </div>
 
-        {/* Revenue Chart */}
         <div className="bg-white rounded-2xl p-6 shadow-xl text-slate-800">
           <div className="flex items-center justify-between mb-4">
             <div>

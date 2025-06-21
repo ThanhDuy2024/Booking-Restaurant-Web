@@ -4,8 +4,10 @@ import authReducer from './slices/authSlice';
 import authSaga from './sagas/authSaga';
 import categorySaga from './sagas/manager/categorySaga';
 import branchSaga from './sagas/manager/branchSaga';
+import profileSage from './sagas/manager/profileSaga'
 import categoryReducer from './slices/manager/categorySlice';
 import foodReducer from './slices/manager/foodSlice';
+import profileReducer from './slices/manager/profileSlice';
 import foodSaga from '@/redux/sagas/manager/foodSaga';
 import staffSaga from './sagas/manager/staffSaga';
 import staffReducer from './slices/manager/staffSlice';
@@ -27,6 +29,7 @@ export const store = configureStore({
     admin_food: foodReducer,
     admin_staff: staffReducer,
     admin_branch: branchReducer,
+    admin_profile: profileReducer,
     client_category: clientCategoryReducer,
     client_food: clientFoodReducer,
     modal: modalSliceReducer,
@@ -46,6 +49,7 @@ export const store = configureStore({
           'admin_food/updateFood',
           'admin_staff/createStaff',
           'admin_staff/updateStaff',
+          'admin_profile/updateProfile',
         ],
         ignoredPaths: ['payload'],
       },

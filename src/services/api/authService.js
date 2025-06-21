@@ -31,3 +31,13 @@ export const getMe = async () => {
     throw error;
   }
 };
+
+export const updateMe = async ({ data }) => {
+  try {
+    const response = await apiClient.put(endPoints.auth.updateProfile);
+    console.log(response);
+  } catch (e) {
+    console.error('Update failed:', e);
+    throw e;
+  }
+};

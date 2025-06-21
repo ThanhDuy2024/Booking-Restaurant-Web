@@ -3,8 +3,17 @@ import createSagaMiddleware from 'redux-saga';
 
 //Reducer
 import authReducer from './slices/authSlice';
+
+import authSaga from './sagas/authSaga';
+import categorySaga from './sagas/manager/categorySaga';
+import branchSaga from './sagas/manager/branchSaga';
+import profileSage from './sagas/manager/profileSaga'
 import categoryReducer from './slices/manager/categorySlice';
 import foodReducer from './slices/manager/foodSlice';
+import profileReducer from './slices/manager/profileSlice';
+import foodSaga from '@/redux/sagas/manager/foodSaga';
+import staffSaga from './sagas/manager/staffSaga';
+
 import staffReducer from './slices/manager/staffSlice';
 import branchReducer from './slices/manager/branchSlice';
 import clientCategoryReducer from './slices/common/categorySlice';
@@ -36,6 +45,7 @@ export const store = configureStore({
     admin_food: foodReducer,
     admin_staff: staffReducer,
     admin_branch: branchReducer,
+    admin_profile: profileReducer,
     client_category: clientCategoryReducer,
     client_branch: clientBranchReducer,
     client_food: clientFoodReducer,
@@ -45,19 +55,22 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       thunk: false,
-      serializableCheck: false,
-        // ignoredActions: [
-        //   'admin_category/createCategory',
-        //   'admin_category/updateCategory',
-        //   'admin_branch/createBranch',
-        //   'admin_branch/updateBranch',
-        //   'admin_branch/updateBranchRequest',
-        //   'admin_food/createFood',
-        //   'admin_food/updateFood',
-        //   'admin_staff/createStaff',
-        //   'admin_staff/updateStaff',
-        // ],
-        // ignoredPaths: ['payload'],
+      serializableCheck: {
+        ignoredActions: [
+          'admin_category/createCategory',
+          'admin_category/updateCategory',
+          'admin_branch/createBranch',
+          'admin_branch/updateBranch',
+          'admin_branch/updateBranchRequest',
+          'admin_food/createFood',
+          'admin_food/updateFood',
+          'admin_staff/createStaff',
+          'admin_staff/updateStaff',
+          'admin_profile/updateProfile',
+        ],
+        ignoredPaths: ['payload'],
+      },
+
 
     }).concat(sagaMiddleware),
 });

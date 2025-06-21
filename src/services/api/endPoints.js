@@ -5,6 +5,7 @@ const endPoints = {
     login: `/api/admin/auth/login`,
     logout: `/api/admin/auth/logout`,
     getProfile: `/api/admin/profile/me`,
+    updateProfile:`api/admin/profile/me`
   },
 
   admin: {
@@ -41,6 +42,10 @@ const endPoints = {
       search, page,
     }),
 
+    //profile
+    editProfile: (id) => `/api/admin/profile/me`,
+    deleteProfile: (id) => `/api/admin/profile/delete/${id}`,
+    getProfile:  `/api/admin/profile/me`
   },
 
   staff: {

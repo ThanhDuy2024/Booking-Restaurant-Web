@@ -98,7 +98,7 @@ export default function ManagerLayout({ children }) {
             <li
               className={`px-2.5 py-2 font-bold border-b-2 border-[var( --border-card)] text-[var(--text-color)] ${activeTab[6] ? `bg-[var(--heading)] text-white` : `bg-white text-text`}`}
               onClick={() => activeCurrTab(6)}>
-              <Link href={'/manager/'}>Cài đặt</Link>
+              <Link href={'/manager/setting'}>Hồ sơ</Link>
             </li>
             <li
               className={`px-2.5 py-2 font-bold border-b-2 border-[var( --border-card)] text-[var(--text-color)] ${activeTab[7] ? `bg-[var(--heading)] text-white` : `bg-white text-text`}`}

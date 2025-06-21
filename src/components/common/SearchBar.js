@@ -1,14 +1,14 @@
-'use client'
+'use client';
 
 import { useState } from 'react';
 
-export default function SearchBar({onSearch}) {
+const SearchBar = ({ onSearch }) => {
   const [query, setQuery] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onSearch?.(query.trim());
-  }
+  };
 
   return (
     <>
@@ -25,4 +25,6 @@ export default function SearchBar({onSearch}) {
       </form>
     </>
   );
-}
+};
+
+export default SearchBar;

@@ -4,15 +4,9 @@ import createSagaMiddleware from 'redux-saga';
 //Reducer
 import authReducer from './slices/authSlice';
 
-import authSaga from './sagas/authSaga';
-import categorySaga from './sagas/manager/categorySaga';
-import branchSaga from './sagas/manager/branchSaga';
-import profileSage from './sagas/manager/profileSaga'
 import categoryReducer from './slices/manager/categorySlice';
 import foodReducer from './slices/manager/foodSlice';
 import profileReducer from './slices/manager/profileSlice';
-import foodSaga from '@/redux/sagas/manager/foodSaga';
-import staffSaga from './sagas/manager/staffSaga';
 
 import staffReducer from './slices/manager/staffSlice';
 import branchReducer from './slices/manager/branchSlice';

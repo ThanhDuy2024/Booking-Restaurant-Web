@@ -45,7 +45,12 @@ const endPoints = {
     //profile
     editProfile: (id) => `/api/admin/profile/me`,
     deleteProfile: (id) => `/api/admin/profile/delete/${id}`,
-    getProfile:  `/api/admin/profile/me`
+    getProfile:  `/api/admin/profile/me`,
+
+    //getRevenue
+    getRevenueByDays: `/api/admin/revenue/day`,
+    getRevenueByMonths: `/api/admin/revenue/month`,
+    getRevenueByYears: `/api/admin/revenue/years`,
   },
 
   staff: {

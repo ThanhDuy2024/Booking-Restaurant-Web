@@ -1,4 +1,5 @@
 'use client';
+
 import React, { useState } from 'react';
 import {
   Chart as ChartJS,
@@ -17,7 +18,7 @@ ChartJS.register(
   LinearScale,
   BarElement,
   Tooltip,
-  Legend
+  Legend,
 );
 
 const monthlyData = [
@@ -93,7 +94,7 @@ const reportManager = () => {
           <button
             onClick={() =>
               setChartType((prev) =>
-                prev === 'revenue' ? 'booking' : 'revenue'
+                prev === 'revenue' ? 'booking' : 'revenue',
               )
             }
             className="mb-4 px-4 py-2 bg-indigo-500 text-white rounded hover:bg-yellow-500"
@@ -144,24 +145,24 @@ const reportManager = () => {
         {showTable && (
           <table className="w-full mt-4 text-left border">
             <thead>
-              <tr className="bg-gray-100 text-gray-600">
-                <th className="p-2 border">Tháng</th>
-                <th className="p-2 border">Doanh Thu (VND)</th>
-                <th className="p-2 border">Online</th>
-                <th className="p-2 border">Walk-in</th>
-              </tr>
+            <tr className="bg-gray-100 text-gray-600">
+              <th className="p-2 border">Tháng</th>
+              <th className="p-2 border">Doanh Thu (VND)</th>
+              <th className="p-2 border">Online</th>
+              <th className="p-2 border">Walk-in</th>
+            </tr>
             </thead>
             <tbody>
-              {monthlyData.map((item, index) => (
-                <tr key={index}>
-                  <td className="p-2 border">{item.month}</td>
-                  <td className="p-2 border">
-                    {item.revenue.toLocaleString('vi-VN')} VND
-                  </td>
-                  <td className="p-2 border">{item.online}</td>
-                  <td className="p-2 border">{item.walkin}</td>
-                </tr>
-              ))}
+            {monthlyData.map((item, index) => (
+              <tr key={index}>
+                <td className="p-2 border">{item.month}</td>
+                <td className="p-2 border">
+                  {item.revenue.toLocaleString('vi-VN')} VND
+                </td>
+                <td className="p-2 border">{item.online}</td>
+                <td className="p-2 border">{item.walkin}</td>
+              </tr>
+            ))}
             </tbody>
           </table>
         )}

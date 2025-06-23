@@ -53,6 +53,13 @@ const endPoints = {
     createOrder: `/api/admin/order/create`,
     updateOrder: (id) => `/api/admin/order/edit/${id}`,
     deleteOrder: (id) => `/api/admin/order/delete/${id}`,
+
+    dailyRevenue: `/api/admin/revenue/branch/day`,
+    monthlyRevenue: `/api/admin/revenue/branch/month`,
+    yearlyRevenue: `/api/admin/revenue/branch/years`,
+    getOrderByStatus: `/api/admin/dashboard/order/status/branch`,
+    totalRevenue: `/api/admin/dashboard/total/price/branch`,
+
   },
   common: {
     getCategory: (search, page) => buildUrlWithParams(`/api/client/category/list`, {

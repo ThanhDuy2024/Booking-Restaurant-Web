@@ -18,7 +18,8 @@ function* handleFetchFood() {
     const data = yield call(fetchFood, search , page);
 
     const {foodList, pages} = data;
-    yield put(getFoodSuccess({food: foodList, pages}));
+    console.log(foodList, typeof foodList);
+    yield put(getFoodSuccess({foods: foodList, pages}));
   } catch (error) {
     const message = error || 'Lấy dữ liệu thất bại';
     yield put(getFoodFailed(message));

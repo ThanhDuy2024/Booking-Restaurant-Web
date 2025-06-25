@@ -27,6 +27,7 @@ const categorySlice = createSlice({
     getCategorySuccess(state, action) {
       state.loading = false;
       state.items = action.payload.items;
+      // console.log(state.items);
       state.pagination.pages = action.payload.pages;
       state.error = null;
     },

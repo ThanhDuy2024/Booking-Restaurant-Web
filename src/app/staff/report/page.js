@@ -36,7 +36,7 @@ const monthlyData = [
   { month: 'Tháng 12', revenue: 55000000, online: 30, walkin: 25 },
 ];
 
-const reportManager = () => {
+const ReportManager = () => {
   const [showTable, setShowTable] = useState(false);
   const [chartType, setChartType] = useState('revenue');
 
@@ -181,4 +181,4 @@ const reportManager = () => {
   );
 };
 
-export default reportManager;
+export default ReportManager;

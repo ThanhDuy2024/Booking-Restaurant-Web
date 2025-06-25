@@ -21,8 +21,8 @@ function* handleFetchStaffAccount() {
     yield put(getStaffRequest());
     const { search, page } = yield select(state => state.admin_staff.query);
     const data = yield call(fetchStaffAccount, search, page);
-    const { staffList, pages } = data;
-    yield put(getStaffSuccess({ staffs: staffList, pages }));
+    const { accountList, pages } = data;
+    yield put(getStaffSuccess({ staffs: accountList, pages }));
   } catch (error) {
     const message = error || 'Lấy dữ liệu thất bại';
     yield put(getStaffFailed(message));

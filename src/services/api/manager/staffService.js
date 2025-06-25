@@ -3,7 +3,7 @@ import endPoints from '@/services/api/endPoints';
 
 export const fetchStaffAccount = async (search, page) => {
   try {
-    const response = await apiClient.post(endPoints.admin.getAllStaffAccount(
+    const response = await apiClient.get(endPoints.admin.getAllStaffAccount(
       search, page,
     ));
     return response.data;

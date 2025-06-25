@@ -11,9 +11,6 @@ import { showToast } from '@/lib/utils';
 export default function BookingModal() {
   const dispatch = useDispatch();
   const branches = useSelector(state => state.client_branch.branches);
-  // if (branches == null) {
-  //   dispatch({ type: 'client_branch/fetchBranch' });
-  // }
 
   const open = useSelector((state) => state.modal.modals.booking.isOpen);
   const [formData, setFormData] = useState({

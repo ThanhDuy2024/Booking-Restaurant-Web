@@ -6,6 +6,7 @@ import AppButton from '@/components/common/AppButton';
 import { closeModal } from '@/redux/slices/modalSlice';
 import { useEffect, useState } from 'react';
 import { Plus } from 'lucide-react'; // Chỉ nếu bạn dùng icon
+import Image from 'next/image';
 
 export default function ModalCreateOrder({ data }) {
   const dispatch = useDispatch();
@@ -102,7 +103,7 @@ export default function ModalCreateOrder({ data }) {
               className="flex justify-between items-center border p-2 rounded mb-2 gap-2"
             >
               <div className="flex items-center gap-3 w-full">
-                <img className="w-10 h-10 rounded-full object-cover" src={food.avatar} alt="" />
+                <Image  className="w-10 h-10 rounded-full object-cover" src={food.avatar} alt="" />
                 <div className="flex flex-col flex-1">
                   <p className="font-medium">{food.name}</p>
                   <p className="text-sm text-gray-500">{food.priceFormat} ₫</p>
@@ -132,7 +133,7 @@ export default function ModalCreateOrder({ data }) {
                 className="flex justify-between items-center border p-2 rounded mb-2"
               >
                 <div className={`flex items-center gap-4`}>
-                  <img className={`w-10 h-10 rounded-full`} src={item.avatar} alt="error" />
+                  <Image  className={`w-10 h-10 rounded-full`} src={item.avatar} alt="error" />
                   <div>
                     <p>{item.name}</p>
                     <p className="text-sm text-gray-500">{item.priceFormat} ₫</p>

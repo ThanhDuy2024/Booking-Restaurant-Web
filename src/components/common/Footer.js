@@ -53,8 +53,7 @@ export default function Footer() {
 
           <div className="md:col-span-2 md:flex md:flex-col md:justify-center ">
             <h3 className="font-semibold text-xl mb-4 lg:text-center">
-              Sign Up For Our Newsletter To Receive Notifications And Other
-              Promotions
+              Đăng ký nhận bản tin của chúng tôi để nhận thông báo và các chương trình khuyến mãi khác.
             </h3>
             <div className="flex mt-4">
               <input
@@ -66,7 +65,7 @@ export default function Footer() {
                 type="submit"
                 className="bg-black text-white px-6 py-2 rounded-r-full hover:bg-gray-800 transition duration-300"
               >
-                Subscribe
+                Đăng kí
               </button>
             </div>
             <div className="mt-12">

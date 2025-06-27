@@ -75,8 +75,8 @@ const endPoints = {
     getCategory: (search, page) => buildUrlWithParams(`/api/client/category/list`, {
       search, page,
     }),
-    getFood: (search, page, categoryId) => buildUrlWithParams(`/api/client/food/list`, {
-      search, page, categoryId,
+    getFood: (search, page, categoryid) => buildUrlWithParams(`/api/client/food/list`, {
+      search, page, categoryid,
     }),
     getBranch: `/api/client/branch/list`,
     booking: `/api/client/booking/create`,

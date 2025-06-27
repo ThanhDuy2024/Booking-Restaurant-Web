@@ -129,12 +129,12 @@ export default function HomePages() {
       <section className="py-8 lg:py-24 bg-white">
         <div className="max-w-[1480px] w-full px-5 mx-auto py-0">
           <div className="flex flex-col-1 lg:items-center justify-between">
-            <h2 className="text-xl font-bold lg:text-xl mt-4">Our Menu</h2>
+            <h2 className="text-xl font-bold lg:text-xl mt-4">Thực đơn</h2>
             <Link
               href="/menu"
               className="mt-4 lg:mt-0 h-9 border border-black px-7 inline-flex items-center font-semibold text-black rounded-full text-[15px] hover:bg-black hover:text-white transition-all duration-300"
             >
-              View All
+              Xem thêm
             </Link>
           </div>
 
@@ -142,7 +142,7 @@ export default function HomePages() {
             {foods.map((item) => (
               <li
                 key={item._id}
-                className="mt-6 md:mt-0 text-center group relative"
+                className="mt-6 md:mt-0 text-center group relative border border-gray-200 rounded-2xl p-2"
               >
                 <a>
                   {item.status === 'inactive' && (
@@ -150,9 +150,10 @@ export default function HomePages() {
                       Out of stock
                     </span>
                   )}
-                  <div className="rounded-xl overflow-hidden bg-white lg:h-[385px]">
+                  <div
+                    className="rounded-xl bg-white overflow-hidden flex items-center justify-center">
                     <img
-                      className="block size-full object-cover"
+                      className="max-h-full max-w-full object-contain"
                       src={item.avatar}
                       alt={item.name}
                     />
@@ -161,7 +162,8 @@ export default function HomePages() {
                 </a>
 
                 <div className="mt-2 relative h-5 overflow-hidden">
-                  <div className="absolute flex items-center flex-col left-1/2 -translate-x-1/2 hover:bottom-0 -bottom-5 transition-all duration-300">
+                  <div
+                    className="absolute flex items-center flex-col left-1/2 -translate-x-1/2 hover:bottom-0 -bottom-5 transition-all duration-300">
                     <div className="flex items-center justify-center font-bold text-15 text-center">
                       <span>{item.priceFormat} ₫</span>
                     </div>
@@ -170,7 +172,7 @@ export default function HomePages() {
                         href="#"
                         className="uppercase text-xs font-medium relative after:absolute after:bottom-0 after:w-0 after:h-[1px] after:bg-black after:left-0 hover:after:w-full after:transition-all after:duration-500"
                       >
-                        Add to cart
+                        Thêm vào giỏ
                       </a>
                     )}
                   </div>
@@ -178,55 +180,6 @@ export default function HomePages() {
               </li>
             ))}
           </ul>
-
-          <div className="mt-10">
-            <ul className="flex items-center justify-center gap-2">
-              <li>
-                <button
-                  onClick={() =>
-                    setCurrentPage((prev) => Math.max(prev - 1, 1))
-                  }
-                  disabled={currentPage === 1}
-                  className="grid place-items-center size-10 rounded-full border border-lightGray disabled:opacity-50"
-                >
-                  <img
-                    className="size-4"
-                    src="/images/ico_chevron_left.png"
-                    alt="Previous"
-                  />
-                </button>
-              </li>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                (page) => (
-                  <li key={page}>
-                    <button
-                      onClick={() => setCurrentPage(page)}
-                      className={`grid place-items-center size-10 rounded-full border border-lightGray hover:text-white hover:bg-black transition-all ${
-                        page === currentPage ? 'bg-black text-white' : ''
-                      }`}
-                    >
-                      {page}
-                    </button>
-                  </li>
-                )
-              )}
-              <li>
-                <button
-                  onClick={() =>
-                    setCurrentPage((prev) => Math.min(prev + 1, totalPages))
-                  }
-                  disabled={currentPage === totalPages}
-                  className="grid place-items-center size-10 rounded-full border border-lightGray disabled:opacity-50"
-                >
-                  <img
-                    className="size-4"
-                    src="/images/ico_chevron_right.png"
-                    alt="Next"
-                  />
-                </button>
-              </li>
-            </ul>
-          </div>
         </div>
       </section>
 

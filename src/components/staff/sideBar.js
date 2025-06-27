@@ -5,6 +5,7 @@ import { X } from 'lucide-react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutRequest } from '@/redux/slices/authSlice';
+import Image from 'next/image';
 
 const sidebarVariants = {
   open: {
@@ -38,7 +39,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
       >
         <div className="flex items-start justify-between mb-6">
           <div className="flex items-center gap-3">
-            <img
+            <Image
               className="w-14 h-14 rounded-full border-2 border-white"
               src={user.avatar}
               alt="Avatar"
@@ -73,7 +74,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
                   className="flex w-full items-center gap-4 bg-white/90 text-black rounded-xl
            hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md"
                 >
-                  <img
+                  <Image
                     className="w-12 h-12 object-contain"
                     src={`/icons/staff/${item.icon}`}
                     alt={item.label}
@@ -86,7 +87,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
                   className="flex items-center gap-4 bg-white/90 text-black rounded-xl
                  hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md"
                 >
-                  <img
+                  <Image
                     className="w-12 h-12 object-contain"
                     src={`/icons/staff/${item.icon}`}
                     alt={item.label}

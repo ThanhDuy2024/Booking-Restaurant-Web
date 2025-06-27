@@ -6,6 +6,7 @@ import AppButton from '@/components/common/AppButton';
 import { Plus } from 'lucide-react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 export default function ModalUpdateOrder({ data }) {
   const dispatch = useDispatch();
@@ -71,7 +72,7 @@ export default function ModalUpdateOrder({ data }) {
                 className="flex justify-between items-center border p-2 rounded mb-2 gap-2"
               >
                 <div className="flex items-center gap-3 w-full">
-                  <img className="w-10 h-10 rounded-full object-cover" src={food.avatar} alt="" />
+                  <Image  className="w-10 h-10 rounded-full object-cover" src={food.avatar} alt="" />
                   <div className="flex flex-col flex-1">
                     <p className="font-medium">{food.name}</p>
                     <p className="text-sm text-gray-500">{food.priceFormat} ₫</p>

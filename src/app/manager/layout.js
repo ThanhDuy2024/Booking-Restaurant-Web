@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { checkAuthRequest } from '@/redux/slices/authSlice';
 import { BsBell, BsBellFill, BsQuestionCircle, BsQuestionCircleFill, BsXCircle } from 'react-icons/bs';
+import { logoutService } from '@/services/api/logoutService';
 
 export default function ManagerLayout({ children }) {
   const [currentTab, setCurrentTab] = useState(-1);
@@ -103,7 +104,11 @@ export default function ManagerLayout({ children }) {
             <li
               className={`px-2.5 py-2 font-bold border-b-2 border-[var( --border-card)] text-[var(--text-color)] ${activeTab[7] ? `bg-[var(--heading)] text-white` : `bg-white text-text`}`}
               onClick={() => activeCurrTab(7)}>
-              <Link href={'/manager/'}>Đăng xuất</Link>
+              <button type={'button'} onClick={() => {
+                logoutService();
+                window.location.reload();
+              }}>Đăng xuất
+              </button>
             </li>
           </ul>
         </div>
@@ -126,5 +131,6 @@ export default function ManagerLayout({ children }) {
           className="flex-1 bg-gray-100 w-full sm:min-w-[85%] h-full">{children}</main>
       </div>
     </div>
-  );
+  )
+    ;
 }

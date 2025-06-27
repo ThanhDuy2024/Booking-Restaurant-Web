@@ -1,5 +1,6 @@
   import apiClient from '@/services/api/apiClient';
 import endPoints from '@/services/api/endPoints';
+  import foodSaga from '@/redux/sagas/manager/foodSaga';
 
 export const fetchFood = async (search, page) => {
   try {
@@ -32,6 +33,7 @@ export const editFood = async (id, updateForm) => {
 export const deleteFood = async (id) => {
   try {
     const response = await apiClient.delete(endPoints.admin.lockFood(id));
+    console.log(response)
     return response.data;
   } catch (error) {
     throw error;

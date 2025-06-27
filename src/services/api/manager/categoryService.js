@@ -37,6 +37,7 @@ export const editCategory = async (id, editForm) => {
 export const deleteCategory = async (id) => {
   try {
     const response = await apiClient.delete(endPoints.admin.disabledCategory(id));
+    console.log(response);
     return response.data;
   } catch (error) {
     // console.error('Delete category failed:', error);

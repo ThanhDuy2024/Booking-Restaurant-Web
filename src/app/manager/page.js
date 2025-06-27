@@ -3,14 +3,71 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import LineChart from '@/lib/charts/Line';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navigator from '@/components/manager/navigatorManager/Navigator';
+import apiClient from '@/services/api/apiClient';
+import endPoints from '@/services/api/endPoints';
+import { toast } from 'react-toastify';
+import VerticalBarChart from '@/lib/charts/Verticalbar';
 
 const Dashboard = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const handleOpenMenu = () => {
     setOpenMenu(!openMenu);
   };
+
+  const [daysData, setDaysData] = useState([]);
+  const [monthData, setMonthData] = useState([]);
+  const [yearData, setYearData] = useState([]);
+  const [titleYearData, setTitleYearData] = useState([]);
+
+  const formattedNumber = (number) => {
+    return new Intl.NumberFormat('vi-VN', {}).format(number);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await apiClient.get(endPoints.admin.getRevenueByDays);
+        if (response.status === 200) {
+          console.log(response.data);
+          setDaysData(response.data.data);
+        } else toast.error('error');
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await apiClient.get(endPoints.admin.getRevenueByMonths);
+        if (response.status === 200) {
+          setMonthData(response.data.data);
+        } else toast.error('error');
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await apiClient.get(endPoints.admin.getRevenueByYears);
+        if (response.status === 200) {
+          setTitleYearData(response.data.years);
+          setYearData(response.data.totalPriceInYears);
+        } else toast.error('error');
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className={'w-full lg:max-w-screen h-screen flex justify-start items-center lg:item flex-col '}>
@@ -68,21 +125,30 @@ const Dashboard = () => {
           {/*THEN, we come to revenue graph*/}
           <div
             className={'w-[90%] h-fit p-3 bg-gray-100 border-2 border-amber-600 rounded-lg text-center m-2'}>
-            <LineChart titleChart={'Doanh thu trong tuần'}
-                       labelDataset={'đv: 000đ'}
-                       labelsChart={['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN']}
-                       dataChart={[120, 1500, 2550, 340, 576, 3500, 4120]}
-            stepSize={500}/>
+            <LineChart titleChart={'Thống kê doanh thu từng ngày'}
+                       labelDataset={'nghìn đồng'}
+                       labelsChart={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31]}
+                       dataChart={daysData ?? []}
+                       stepSize={500} />
+
+          </div>
+          <div
+            className={'w-[90%] h-fit p-3 bg-gray-100 border-2 border-amber-600 rounded-lg text-center m-2'}>
+            <LineChart titleChart={'Doanh thu theo tháng'}
+                       labelDataset={'đv: ngìn đồng'}
+                       labelsChart={['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12']}
+                       dataChart={monthData ?? []}
+                       stepSize={50} />
 
           </div>
           <div
             className={'w-[90%] h-fit p-3 bg-gray-100 border-2 border-amber-600 rounded-lg text-center m-2'}>
 
-            <LineChart titleChart={'Doanh thu trong tháng'}
-                       labelDataset={'đv: 000đ'}
-                       labelsChart={['T1', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'T8', 'T9', 'T10', 'T11', 'T12']}
-                       dataChart={[120, 1500, 2550, 340, 576, 3500, 4120, 120, 1500, 2550, 340, 5761]}
-            stepSize={500}/>
+            <VerticalBarChart titleChart={'Thống kê doanh thu từng năm'}
+                              labelDataset={'nghìn đồng'}
+                              labelsChart={titleYearData}
+                              dataChart={yearData ?? []}
+                              stepSize={500} />
           </div>
         </div>
         {/*5. Notification (from system)*/}

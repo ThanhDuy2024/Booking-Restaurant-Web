@@ -55,67 +55,53 @@ const MenuManager = () => {
             </button>
           </div>
           <div className="mt-12">
-            {items.map((category) => (
-              <div key={category._id} className="bg-white rounded  shadow">
-                <div
-                  className="flex justify-between items-center px-4 py-3 cursor-pointer hover:bg-gray-100"
-                  onClick={() => {
-                    setOpenCategory(openCategory === category._id ? null : category._id);
-                    console.log(category._id);
-                  }
-                  }
-                >
-                  <span className="font-semibold text-gray-800">
-                    {category.name}
-                  </span>
-                  {openCategory === category._id ? (
-                    <ChevronUp className="w-5 h-5 text-gray-500" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5 text-gray-500" />
-                  )}
-                </div>
 
-                {openCategory === category._id && (
-                  <ul className="px-6 pb-4 space-y-3">
-                    {foods['foods']
-                      .filter(item => item.categoryId === category._id)
-                      .map((item) => {
-                        return (
-
-                          <li
-                            key={item._id}
-                            className="flex items-center justify-between px-4 py-2 rounded-md shadow-sm bg-gray-50"
-                          >
-                            <div className="flex items-center gap-3">
-                              <img
-                                src={item.avatar}
-                                alt="error"
-                                className="w-12 h-12 object-cover rounded-full"
-                              />
-                              <div>
+            <ul className="px-6 pb-4 space-y-3">
+              {foods['foods'].map((item) => {
+                  return (
+                    <li
+                      key={item._id}
+                      className="flex items-center justify-between px-4 py-2 rounded-md shadow-sm bg-gray-50"
+                    >
+                      <div className="flex items-center gap-3">
+                        <img
+                          src={item.avatar}
+                          alt="error"
+                          className="w-12 h-12 object-cover rounded-full"
+                        />
+                        <div>
                               <span className="text-gray-800 font-medium block">
                                 {item.name}
                               </span>
-                                <span className="text-gray-500 text-sm">
+                          <span className="text-gray-500 text-sm">
                                 {item.price} ₫
                               </span>
-                              </div>
-                            </div>
-                            <button
-                              className="bg-yellow-200 text-yellow-700 hover:bg-yellow-500 hover:text-white px-3 py-1 rounded text-sm transition"
-                            onClick={() => {
-                              setOpenModalUpdate(true);
-                              dispatch(selectFood(item._id));
-                            }}>
-                              Chỉnh sửa
-                            </button>
-                          </li>
-                        );
-                      })}
-                  </ul>
-                )}
-              </div>
-            ))}
+                        </div>
+                      </div>
+                      <div className={'flex flex-row justify-between items-center gap-3'}>
+                        <button
+                          type={'button'}
+                          className="bg-yellow-200 text-yellow-700 hover:bg-yellow-500 hover:text-white px-3 py-1 rounded text-sm transition"
+                          onClick={() => {
+                            setOpenModalUpdate(true);
+                            dispatch(selectFood(item._id));
+                          }}>
+                          Chỉnh sửa
+                        </button>
+                        <button
+                          type={'button'}
+                          className="bg-yellow-200 text-yellow-700 hover:bg-yellow-500 hover:text-white px-3 py-1 rounded text-sm transition"
+                          onClick={() => {
+                            dispatch({ type: 'admin_food/deleteFood', payload: item._id });
+                            window.location.reload();
+                          }}>
+                          Xóa
+                        </button>
+                      </div>
+                    </li>
+                  );
+                })}
+            </ul>
           </div>
         </div>
       </section>

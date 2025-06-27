@@ -66,6 +66,7 @@ function* handleDeleteFood(action) {
     yield put(deleteFoodRequest());
 
     yield call(deleteFood, action.payload);
+    showToast('Xóa món thành công', {type: 'success'});
     yield put(deleteFoodSuccess(action.payload));
   } catch (error) {
     const message = error || 'Khóa món thất bại';

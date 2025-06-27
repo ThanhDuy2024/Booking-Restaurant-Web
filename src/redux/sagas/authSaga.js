@@ -9,7 +9,7 @@ import {
   checkAuthRequest,
 } from '../slices/authSlice';
 import { showToast } from '@/lib/utils';
-import { getMe, loginService, logoutService } from '@/services/api/authService';
+import { getMe, loginService, logoutService } from '@/services/api/logoutService';
 
 function* handleLogin(action) {
   try {

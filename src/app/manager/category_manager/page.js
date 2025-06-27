@@ -8,6 +8,7 @@ import Pagination from '@/components/common/Pagination';
 import CategoryCreateForm from '@/components/manager/Form/CreateCategoryForm';
 import CategoryUpdateForm from '@/components/manager/Form/UpdateCategoryForm';
 import Spinner from '@/components/common/loading/Spinner';
+import { BsX, BsXCircle } from 'react-icons/bs';
 
 export default function CategoryManage() {
   const [openModalCreate, setOpenModalCreate] = useState(false);
@@ -21,12 +22,16 @@ export default function CategoryManage() {
 
 
   const handleSearch = (keyword) => {
-    dispatch(updateQuery({search: keyword}))
+    dispatch(updateQuery({ search: keyword }));
   };
 
   const handleClickRow = (item) => {
     dispatch(selectCategory(item._id));
     setOpenModalUpdate(true);
+  };
+
+  const handleRemoveItem = (id) => {
+    dispatch({ type: 'admin_category/deleteCategory', payload: id });
   };
 
   return (
@@ -62,14 +67,19 @@ export default function CategoryManage() {
               items.map((item) => (
                 <tr
                   key={item._id}
-                  onClick={() => handleClickRow(item)}
+
                   className="border-y hover:bg-gradient-to-r from-violet-200 to-amber-200 transition duration-1000 cursor-pointer ">
-                  <td className="px-6 py-4 flex items-center gap-4">
+                  <td className="px-6 py-4 flex items-center gap-4" onClick={() => handleClickRow(item)}>
                     <img className={`w-10 h-10 rounded-2xl`} src={item.avatar} alt="" />
                     {item.name}
                   </td>
                   <td className="px-6 py-3">
-                    {item.status === 'active' ? 'Đang hoạt động ✔️' : 'Đã khóa ❌'}
+                    <div className={'flex flex-row justify-between items-center'}>
+                      {item.status === 'active' ? 'Đang hoạt động ✔️' : 'Đã khóa ❌'}
+                      <button type={'button'} onClick={() => handleRemoveItem(item._id)}>
+                        <BsXCircle size={20} />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               )))

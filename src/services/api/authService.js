@@ -1,5 +1,8 @@
 import endPoints from '@/services/api/endPoints';
 import apiClient from '@/services/api/apiClient';
+import Cookies from 'js-cookie';
+
+const token = Cookies.get('authToken');
 
 export const loginService = async (loginData) => {
   try {
@@ -12,7 +15,7 @@ export const loginService = async (loginData) => {
   }
 };
 
-export const logoutService = async () => {
+export const authService = async () => {
   try {
     const response = await apiClient.delete(endPoints.auth.logout);
     console.log(response);
@@ -25,7 +28,11 @@ export const logoutService = async () => {
 
 export const getMe = async () => {
   try {
-    const response = await apiClient.get(endPoints.auth.getProfile);
+    const response = await apiClient.get(endPoints.auth.getProfile, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     console.log('response', response);
     return response.data;
   } catch (error) {

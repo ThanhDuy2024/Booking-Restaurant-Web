@@ -10,7 +10,7 @@ import {selectProfile} from 'src/redux/slices/manager/profileSlice'
 import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
 
-const getMe=React.lazy(()=>import('../../../services/api/logoutService'));
+const getMe=React.lazy(()=>import('../../../services/api/authService'));
 
 const SettingPage = () => {
   const dispatch = useDispatch();

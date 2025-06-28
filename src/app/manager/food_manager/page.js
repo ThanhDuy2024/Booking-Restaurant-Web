@@ -15,7 +15,8 @@ const MenuManager = () => {
   const [openModalUpdate, setOpenModalUpdate] = useState(false);
   const dispatch = useDispatch();
 
-  const { foods, query, loading, error, pagination, selectedFood } = useSelector(state => state.admin_food);
+  const {query, loading, error, pagination, selectedFood } = useSelector(state => state.admin_food);
+  const {foods} = useSelector(state => state.client_food);
   const { items } = useSelector(state => state.admin_category);
 
   const handleSearch = (keyword) => {
@@ -57,7 +58,7 @@ const MenuManager = () => {
           <div className="mt-12">
 
             <ul className="px-6 pb-4 space-y-3">
-              {foods['foods'].map((item) => {
+              {foods.map((item) => {
                   return (
                     <li
                       key={item._id}

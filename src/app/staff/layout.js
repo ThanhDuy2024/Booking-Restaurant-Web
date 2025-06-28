@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Sidebar from '@/components/staff/sideBar';
 import { Menu } from 'lucide-react';
 import { checkAuthRequest } from '@/redux/slices/authSlice';
+import Image from 'next/image';
 
 
 export default function StaffLayout({ children }) {
@@ -34,7 +35,15 @@ export default function StaffLayout({ children }) {
         <button onClick={() => setIsOpen(true)} className="md:block">
           <Menu size={28} />
         </button>
-        <h1 className="text-lg font-bold">ARENA OF VALOR</h1>
+        <h1 className="">
+          <Image
+            src={'/images/logo.webp'}
+            alt="Logo"
+            width={150}
+            height={50}
+          />
+
+        </h1>
       </header>
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
       <main className="p-6">{children}</main>

@@ -1,13 +1,12 @@
 'use client'
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { updateQuery } from '@/redux/slices/manager/categorySlice';
+import { updateQuery, selectStaff } from '@/redux/slices/manager/staffSlice';
 import SearchBar from '@/components/common/SearchBar';
 import Spinner from '@/components/common/loading/Spinner';
 import Pagination from '@/components/common/Pagination';
 import CreateStaffForm from '@/components/manager/Form/CreateStaffForm';
 import UpdateStaffForm from '@/components/manager/Form/UpdateStaffForm';
-import { selectStaff } from '@/redux/slices/manager/staffSlice';
 
 
 const UserManagerPage = () => {

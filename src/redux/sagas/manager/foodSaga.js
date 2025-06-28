@@ -14,16 +14,14 @@ function* handleFetchFood() {
   try {
     yield put(getFoodRequest());
 
-    const {search, page} = yield select(state => state.admin_food.query);
-    const data = yield call(fetchFood, search , page);
-
-    const {foodList, pages} = data;
-    console.log(foodList, typeof foodList);
-    yield put(getFoodSuccess({foods: foodList, pages}));
+    const { search, page } = yield select(state => state.admin_food.query);
+    const data = yield call(fetchFood, search, page);
+    const { foodList, pages } = data;
+    yield put(getFoodSuccess({ foods: foodList, pages }));
   } catch (error) {
     const message = error || 'Lấy dữ liệu thất bại';
     yield put(getFoodFailed(message));
-    showToast(message, {type: 'error'});
+    showToast(message, { type: 'error' });
   }
 }
 
@@ -34,12 +32,12 @@ function* handleCreateFood(action) {
     const newFood = yield call(createFood, action.payload);
     yield put(createFoodSuccess(newFood));
 
-    showToast('Tạo danh mục thành công', {type: 'success'});
-    yield put({type: 'admin_food/fetchFood'});
+    showToast('Tạo danh mục thành công', { type: 'success' });
+    yield put({ type: 'admin_food/fetchFood' });
   } catch (error) {
     const message = error || 'Tạo món ăn mới thất bại';
     yield put(createFoodFailed(message));
-    showToast(message, {type: 'error'});
+    showToast(message, { type: 'error' });
   }
 }
 
@@ -47,17 +45,17 @@ function* handleUpdateFood(action) {
   try {
     yield put(updateFoodRequest());
 
-    const {id, update} = action.payload;
+    const { id, update } = action.payload;
     yield call(editFood, id, update);
 
     yield put(updateFoodSuccess({ id }));
-    showToast('Cập nhật món ăn thành công', {type: 'success'});
+    showToast('Cập nhật món ăn thành công', { type: 'success' });
 
-    yield put({type: 'admin_food/fetchFood'});
+    yield put({ type: 'admin_food/fetchFood' });
   } catch (error) {
     const message = error || 'Cập nhật danh mục thất bại';
     yield put(updateFoodFailed(message));
-    showToast(message, {type: 'error'});
+    showToast(message, { type: 'error' });
   }
 }
 
@@ -66,12 +64,13 @@ function* handleDeleteFood(action) {
     yield put(deleteFoodRequest());
 
     yield call(deleteFood, action.payload);
-    showToast('Xóa món thành công', {type: 'success'});
-    yield put(deleteFoodSuccess(action.payload));
+    showToast('Xóa món thành công', { type: 'success' });
+    yield put(deleteFoodSuccess('xóa thành công'));
+    yield put({ type: 'admin_food/fetchFood' });
   } catch (error) {
     const message = error || 'Khóa món thất bại';
     yield put(deleteFoodFailed(message));
-    showToast(message, {type: 'error'});
+    showToast(message, { type: 'error' });
   }
 }
 

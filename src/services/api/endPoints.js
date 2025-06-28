@@ -22,7 +22,7 @@ const endPoints = {
     createFood: `/api/admin/food/create`,
     editFood: (id) => `/api/admin/food/edit/${id}`,
     lockFood: (id) => `/api/admin/food/delete/${id}`,
-    getAllFood: (search, page) => buildUrlWithParams(`/api/admin/food/list`, {
+    getAllFood: (search, page) => buildUrlWithParams(`/api/admin/food/list/`, {
       search, page,
     }),
 

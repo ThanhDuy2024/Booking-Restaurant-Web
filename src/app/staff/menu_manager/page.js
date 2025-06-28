@@ -1,15 +1,17 @@
 'use client';
-import React, { useState } from 'react';
-import SearchBar from '@/components/common/SearchBar';
+import React, { useEffect, useState } from 'react';
 import { ChevronDown, ChevronUp } from 'lucide-react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateQuery } from '@/redux/slices/common/foodSlice';
+import Pagination from '@/components/common/Pagination';
+import Spinner from '@/components/common/loading/Spinner';
 
 const MenuManager = () => {
-  const [openCategory, setOpenCategory] = useState(null);
-  const { foods } = useSelector(state => state.client_food);
-  const { category } = useSelector(state => state.client_category);
-
-
+  const { foods, query, pagination, loading } = useSelector(state => state.client_food);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch({type: 'client_food/fetchFood'});
+  }, [query]);
   return (
     <main>
       <section>
@@ -18,62 +20,46 @@ const MenuManager = () => {
             {/*<SearchBar onSearch={handleSearch} />*/}
             Thực Đơn Món Ăn Nhà Hàng
           </h2>
-
+          {loading && <Spinner type="PacmanLoader" color="#000000" size={60} delay={2000} />}
           <div className="mt-12">
-            {category.map((category) => (
-              <div key={category._id} className="bg-white rounded  shadow">
-                <div
-                  className="flex justify-between items-center px-4 py-3 cursor-pointer hover:bg-gray-100"
-                  onClick={() =>
-                    setOpenCategory(openCategory === category._id ? null : category._id)
-                  }
-                >
-                  <span className="font-semibold text-gray-800">
-                    {category.name}
-                  </span>
-                  {openCategory === category._id ? (
-                    <ChevronUp className="w-5 h-5 text-gray-500" />
-                  ) : (
-                    <ChevronDown className="w-5 h-5 text-gray-500" />
-                  )}
-                </div>
-
-                {openCategory === category._id && (
-                  <ul className="px-6 pb-4 space-y-3">
-                    {foods
-                      .filter(item => item.categoryId === category._id)
-                      .map((item) => {
-                      return (
-                        <li
-                          key={item._id}
-                          className="flex items-center justify-between px-4 py-2 rounded-md shadow-sm bg-gray-50"
-                        >
-                          <div className="flex items-center gap-3">
-                            <img
-                              src={item.avatar}
-                              alt='error'
-                              className="w-12 h-12 object-cover rounded-full"
-                            />
-                            <div>
-                              <span className="text-gray-800 font-medium block">
-                                {item.name}
-                              </span>
-                              <span className="text-gray-500 text-sm">
-                                {item.priceFormat} ₫
-                              </span>
-                            </div>
-                          </div>
-                          <button
-                            className="bg-yellow-200 text-yellow-700 hover:bg-yellow-500 hover:text-white px-3 py-1 rounded text-sm transition">
-                            Chỉnh sửa
-                          </button>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                )}
-              </div>
-            ))}
+            <ul className="px-6 pb-4 space-y-3">
+              {foods
+                .map((item) => {
+                  return (
+                    <li
+                      key={item._id}
+                      className="flex items-center justify-between px-4 py-2 rounded-md shadow-sm bg-gray-50"
+                    >
+                      <div className="flex items-center gap-3">
+                        <img
+                          src={item.avatar}
+                          alt="error"
+                          className="w-12 h-12 object-cover rounded-full"
+                        />
+                        <div>
+                          <span className="text-gray-800 font-medium block">
+                            {item.name}
+                          </span>
+                          <span className="text-gray-500 text-sm">
+                            {item.priceFormat} ₫
+                          </span>
+                        </div>
+                      </div>
+                      <button
+                        className="bg-yellow-200 text-yellow-700 hover:bg-yellow-500 hover:text-white px-3 py-1 rounded text-sm transition">
+                        Chỉnh sửa
+                      </button>
+                    </li>
+                  );
+                })}
+            </ul>
+            <Pagination
+              currentPage={query.page || 1}
+              totalPages={pagination.pages}
+              onPageChange={(newPage) => {
+                dispatch(updateQuery({ page: newPage }));
+              }}
+            />
           </div>
         </div>
       </section>

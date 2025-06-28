@@ -26,7 +26,7 @@ const foodSlice = createSlice({
 
     getFoodSuccess(state, action) {
       state.loading = false;
-      state.foods = action.payload;
+      state.foods = action.payload.foods;
       // console.log(state.foods);
       state.pagination.pages = action.payload.pages;
       state.error = null;
@@ -89,7 +89,7 @@ const foodSlice = createSlice({
     // ========== SELECT ==========
     selectFood(state, action) {
       const id = action.payload;
-      state.selectedFood = (state.foods.foods || []).find(food => food._id === id) || null;
+      state.selectedFood = (state.foods || []).find(food => food._id === id) || null;
     },
 
     clearSelectedFood(state) {

@@ -40,13 +40,15 @@ export default function Sidebar({ isOpen, setIsOpen }) {
         <div className="flex items-start justify-between mb-6">
           <div className="flex items-center gap-3">
             <Image
-              className="w-14 h-14 rounded-full border-2 border-white"
+              width={56}
+              height={56}
+              className="rounded-full border-2 border-white"
               src={user.avatar}
               alt="Avatar"
             />
             <div className="text-black">
-              <p className="font-semibold text-sm leading-tight">Hoangcs</p>
-              <p className="text-xs opacity-80">example@email.com</p>
+              <p className="font-semibold text-sm leading-tight max-w-[100px] truncate">{user.fullName}</p>
+              <p className="text-xs opacity-80">{user.email}</p>
             </div>
           </div>
           <button onClick={() => setIsOpen(false)} className="text-white">
@@ -75,6 +77,8 @@ export default function Sidebar({ isOpen, setIsOpen }) {
            hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md"
                 >
                   <Image
+                    width={56}
+                    height={56}
                     className="w-12 h-12 object-contain"
                     src={`/icons/staff/${item.icon}`}
                     alt={item.label}
@@ -88,7 +92,9 @@ export default function Sidebar({ isOpen, setIsOpen }) {
                  hover:bg-white transition-all duration-300 shadow-sm hover:shadow-md"
                 >
                   <Image
-                    className="w-12 h-12 object-contain"
+                    width={56}
+                    height={56}
+                    className="object-contain"
                     src={`/icons/staff/${item.icon}`}
                     alt={item.label}
                   />

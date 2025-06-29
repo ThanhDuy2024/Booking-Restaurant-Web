@@ -75,7 +75,17 @@ const BranchManagerPage = () => {
                       {item.name}
                     </td>
                     <td className="px-6 py-3">
-                      {item.status === 'active' ? 'Đang hoạt động ✔️' : 'Đã khóa ❌'}
+                      <div className={'flex flex-row justify-between items-center'}>
+                        {item.status === 'active' ? 'Đang hoạt động ✔️' : 'Đã khóa ❌'}
+                        <button
+                          type={'button'}
+                          className="bg-yellow-200 text-yellow-700 hover:bg-yellow-500 hover:text-white px-3 py-1 rounded text-sm transition"
+                          onClick={() => {
+                            dispatch({ type: 'admin_food/deleteFood', payload: item._id });
+                          }}>
+                          Xóa
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 )))

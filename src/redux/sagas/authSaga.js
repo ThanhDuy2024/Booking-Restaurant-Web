@@ -9,7 +9,7 @@ import {
   checkAuthRequest,
 } from '../slices/authSlice';
 import { showToast } from '@/lib/utils';
-import { getMe, loginService, authService } from '@/services/api/authService';
+import { getMe, loginService, authService, logout } from '@/services/api/authService';
 
 function* handleLogin(action) {
   try {
@@ -37,7 +37,7 @@ function* handleLogin(action) {
 
 function* handleLogout() {
   try {
-    const message = yield call(authService);
+    const message = yield call(logout);
     yield delay(1000);
     yield put(logoutSuccess());
     showToast(message || 'Đăng xuất thành công');

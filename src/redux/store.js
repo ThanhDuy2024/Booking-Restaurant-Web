@@ -49,21 +49,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       thunk: false,
-      serializableCheck: {
-        ignoredActions: [
-          'admin_category/createCategory',
-          'admin_category/updateCategory',
-          'admin_branch/createBranch',
-          'admin_branch/updateBranch',
-          'admin_branch/updateBranchRequest',
-          'admin_food/createFood',
-          'admin_food/updateFood',
-          'admin_staff/createStaff',
-          'admin_staff/updateStaff',
-          'admin_profile/updateProfile',
-        ],
-        ignoredPaths: ['payload'],
-      },
+      serializableCheck: false,
 
 
     }).concat(sagaMiddleware),

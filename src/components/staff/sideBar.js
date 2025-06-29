@@ -43,7 +43,7 @@ export default function Sidebar({ isOpen, setIsOpen }) {
               width={56}
               height={56}
               className="rounded-full border-2 border-white"
-              src={user.avatar}
+              src={user?.avatar || '/images/avt1.jpg'}
               alt="Avatar"
             />
             <div className="text-black">

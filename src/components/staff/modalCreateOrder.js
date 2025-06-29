@@ -7,11 +7,13 @@ import { closeModal } from '@/redux/slices/modalSlice';
 import { useEffect, useState } from 'react';
 import { Plus } from 'lucide-react'; // Chỉ nếu bạn dùng icon
 import Image from 'next/image';
+import { updateQuery } from '@/redux/slices/manager/categorySlice';
+import Pagination from '@/components/common/Pagination';
 
 export default function ModalCreateOrder({ data }) {
   const dispatch = useDispatch();
   const open = useSelector(state => state.modal.modals['createOrder']);
-  const { foods } = useSelector(state => state.client_food);
+  const { foods, query, pagination } = useSelector(state => state.client_food);
   const [foodChosen, setFoodChosen] = useState([]);
   const [formData, setFormData] = useState({
     foodObject: [],
@@ -75,7 +77,7 @@ export default function ModalCreateOrder({ data }) {
 
   useEffect(() => {
     dispatch({ type: 'client_food/fetchFood' });
-  }, [dispatch]);
+  }, [query,dispatch]);
 
   return (
     <ReusableModal
@@ -103,7 +105,7 @@ export default function ModalCreateOrder({ data }) {
               className="flex justify-between items-center border p-2 rounded mb-2 gap-2"
             >
               <div className="flex items-center gap-3 w-full">
-                <Image  className="w-10 h-10 rounded-full object-cover" src={food.avatar} alt="" />
+                <Image width={56} height={56}  className="rounded-full object-cover" src={food.avatar} alt="" />
                 <div className="flex flex-col flex-1">
                   <p className="font-medium">{food.name}</p>
                   <p className="text-sm text-gray-500">{food.priceFormat} ₫</p>
@@ -119,6 +121,13 @@ export default function ModalCreateOrder({ data }) {
               </button>
             </div>
           ))}
+          <Pagination
+            currentPage={query.page || 1}
+            totalPages={pagination.pages}
+            onPageChange={(newPage) => {
+              dispatch(updateQuery({ page: newPage }));
+            }}
+          />
         </div>
 
         {/* Món đã chọn */}
@@ -133,7 +142,7 @@ export default function ModalCreateOrder({ data }) {
                 className="flex justify-between items-center border p-2 rounded mb-2"
               >
                 <div className={`flex items-center gap-4`}>
-                  <Image  className={`w-10 h-10 rounded-full`} src={item.avatar} alt="error" />
+                  <Image width={56} height={56}  className={`rounded-full`} src={item.avatar} alt="error" />
                   <div>
                     <p>{item.name}</p>
                     <p className="text-sm text-gray-500">{item.priceFormat} ₫</p>

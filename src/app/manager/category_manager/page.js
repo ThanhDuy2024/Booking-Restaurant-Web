@@ -76,8 +76,10 @@ export default function CategoryManage() {
                   <td className="px-6 py-3">
                     <div className={'flex flex-row justify-between items-center'}>
                       {item.status === 'active' ? 'Đang hoạt động ✔️' : 'Đã khóa ❌'}
-                      <button type={'button'} onClick={() => handleRemoveItem(item._id)}>
-                        <BsXCircle size={20} />
+                      <button type={'button'}
+                              className="bg-yellow-200 text-yellow-700 hover:bg-yellow-500 hover:text-white px-3 py-1 rounded text-sm transition"
+                              onClick={() => handleRemoveItem(item._id)}>
+                        Xóa
                       </button>
                     </div>
                   </td>

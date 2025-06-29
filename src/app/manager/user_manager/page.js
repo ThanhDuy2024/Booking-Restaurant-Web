@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateQuery, selectStaff } from '@/redux/slices/manager/staffSlice';
 import SearchBar from '@/components/common/SearchBar';
@@ -76,7 +76,17 @@ const UserManagerPage = () => {
                     {item.role}
                   </td>
                   <td className="px-6 py-3">
+                    <div className={'flex flex-row justify-between items-center'}>
                     {item.status === 'active' ? 'Đang hoạt động ✔️' : 'Đã khóa ❌'}
+                      <button
+                        type={'button'}
+                        className="bg-yellow-200 text-yellow-700 hover:bg-yellow-500 hover:text-white px-3 py-1 rounded text-sm transition"
+                        onClick={() => {
+                          dispatch({ type: 'admin_staff/deleteStaff', payload: item._id });
+                        }}>
+                        Xóa
+                      </button>
+                    </div>
                   </td>
                 </tr>
               )))

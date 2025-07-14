@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState, Suspense } from 'react';
 import { selectBranch, updateQuery } from '@/redux/slices/manager/branchSlice';
 import React from 'react';
+import { selectFood } from '@/redux/slices/manager/foodSlice';
 
 
 // Lazy load components
@@ -68,7 +69,6 @@ const BranchManagerPage = () => {
                 branches.map((item) => (
                   <tr
                     key={item._id}
-                    onClick={() => handleClickRow(item)}
                     className="border-y hover:bg-gradient-to-r from-violet-200 to-amber-200 transition duration-1000 cursor-pointer ">
                     <td className="px-6 py-4 flex items-center gap-4">
                       <img className={`w-10 h-10 rounded-2xl`} src={item.avatar} alt="" />
@@ -77,14 +77,22 @@ const BranchManagerPage = () => {
                     <td className="px-6 py-3">
                       <div className={'flex flex-row justify-between items-center'}>
                         {item.status === 'active' ? 'Đang hoạt động ✔️' : 'Đã khóa ❌'}
-                        <button
-                          type={'button'}
-                          className="bg-yellow-200 text-yellow-700 hover:bg-yellow-500 hover:text-white px-3 py-1 rounded text-sm transition"
-                          onClick={() => {
-                            dispatch({ type: 'admin_food/deleteFood', payload: item._id });
-                          }}>
-                          Xóa
-                        </button>
+                        <div className={'flex flex-row jus-between items-center gap-2'}>
+                          <button
+                            type={'button'}
+                            className="bg-yellow-200 text-yellow-700 hover:bg-yellow-500 hover:text-white px-3 py-1 rounded text-sm transition"
+                            onClick={() => handleClickRow(item)}>
+                            Chỉnh sửa
+                          </button>
+                          <button
+                            type={'button'}
+                            className="bg-yellow-200 text-yellow-700 hover:bg-yellow-500 hover:text-white px-3 py-1 rounded text-sm transition"
+                            onClick={() => {
+                              dispatch({ type: 'admin_branch/deleteBranch', payload: item._id });
+                            }}>
+                            Xóa
+                          </button>
+                        </div>
                       </div>
                     </td>
                   </tr>
